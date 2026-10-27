@@ -19995,9 +19995,9 @@ L_80038cc8:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0xcu, gte_read_data(13));
-    MEM_WW(R(6) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0xcu, 13);
+    gte_store_sxy(R(6) + 0x10u, 14);
     c->cycles += 22;
 L_80038d90:
     R(6) = R(6) + 0x28u;
@@ -20091,9 +20091,9 @@ L_80038dec:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     c->cycles += 22;
 L_80038eb4:
     R(7) = R(7) + 0x28u;
@@ -20190,9 +20190,9 @@ L_80038efc:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     c->cycles += 26;
 L_80038fe8:
@@ -20290,9 +20290,9 @@ L_80039030:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     c->cycles += 26;
 L_8003911c:
@@ -20373,9 +20373,9 @@ L_80039178:
         c->cycles += 7;
         if (t) { goto L_8003926c; }
     }
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0xcu, gte_read_data(13));
-    MEM_WW(R(6) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0xcu, 13);
+    gte_store_sxy(R(6) + 0x10u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -20385,7 +20385,7 @@ L_80039178:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(6) + 0x14u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x14u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -20482,9 +20482,9 @@ L_800392c8:
         c->cycles += 7;
         if (t) { goto L_800393bc; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -20494,7 +20494,7 @@ L_800392c8:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(7) + 0x14u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x14u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -20591,9 +20591,9 @@ L_80039404:
         c->cycles += 7;
         if (t) { goto L_80039520; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -20622,7 +20622,7 @@ L_80039404:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x14u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x14u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     c->cycles += 24;
 L_80039520:
@@ -20704,9 +20704,9 @@ L_80039568:
         c->cycles += 7;
         if (t) { goto L_80039684; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -20735,7 +20735,7 @@ L_80039568:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x14u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x14u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     c->cycles += 24;
 L_80039684:
@@ -20829,9 +20829,9 @@ L_800396e8:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x10u, gte_read_data(13));
-    MEM_WW(R(6) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x10u, 13);
+    gte_store_sxy(R(6) + 0x18u, 14);
     c->cycles += 22;
 L_800397b0:
     R(6) = R(6) + 0x38u;
@@ -20923,9 +20923,9 @@ L_80039808:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     c->cycles += 22;
 L_800398cc:
     R(7) = R(7) + 0x38u;
@@ -21034,9 +21034,9 @@ L_8003990c:
     R(10) = MEM_RW(R(4) + 0x8u);
     R(11) = MEM_RW(R(4) + 0xcu);
     R(12) = MEM_RW(R(4) + 0x10u);
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(21));
     MEM_WW(R(7) + 0x14u, gte_read_data(22));
@@ -21160,9 +21160,9 @@ L_80039a8c:
     R(10) = MEM_RW(R(4) + 0x8u);
     R(11) = MEM_RW(R(4) + 0xcu);
     R(12) = MEM_RW(R(4) + 0x10u);
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(21));
     MEM_WW(R(7) + 0x14u, gte_read_data(22));
@@ -21257,9 +21257,9 @@ L_80039c28:
         c->cycles += 7;
         if (t) { goto L_80039d1c; }
     }
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x10u, gte_read_data(13));
-    MEM_WW(R(6) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x10u, 13);
+    gte_store_sxy(R(6) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -21269,7 +21269,7 @@ L_80039c28:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(6) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x20u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -21364,9 +21364,9 @@ L_80039d74:
         c->cycles += 7;
         if (t) { goto L_80039e68; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -21392,7 +21392,7 @@ L_80039d74:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     c->cycles += 20;
 L_80039e68:
     R(7) = R(7) + 0x48u;
@@ -21480,9 +21480,9 @@ L_80039ea8:
         c->cycles += 7;
         if (t) { goto L_8003a030; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     gte_write_data(2, MEM_RW(R(11) + 0x0u));
     gte_write_data(3, MEM_RW(R(11) + 0x4u));
@@ -21524,7 +21524,7 @@ L_80039ea8:
     R(10) = MEM_RW(R(4) + 0x8u);
     R(11) = MEM_RW(R(4) + 0xcu);
     R(12) = MEM_RW(R(4) + 0x10u);
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(21));
     MEM_WW(R(7) + 0x14u, gte_read_data(22));
@@ -21627,9 +21627,9 @@ L_8003a074:
         c->cycles += 7;
         if (t) { goto L_8003a1fc; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     gte_write_data(2, MEM_RW(R(11) + 0x0u));
     gte_write_data(3, MEM_RW(R(11) + 0x4u));
@@ -21671,7 +21671,7 @@ L_8003a074:
     R(10) = MEM_RW(R(4) + 0x8u);
     R(11) = MEM_RW(R(4) + 0xcu);
     R(12) = MEM_RW(R(4) + 0x10u);
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(21));
     MEM_WW(R(7) + 0x14u, gte_read_data(22));
@@ -21779,9 +21779,9 @@ L_8003a258:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x10u, gte_read_data(13));
-    MEM_WW(R(6) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x10u, 13);
+    gte_store_sxy(R(6) + 0x18u, 14);
     c->cycles += 22;
 L_8003a320:
     R(6) = R(6) + 0x40u;
@@ -21875,9 +21875,9 @@ L_8003a37c:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     c->cycles += 22;
 L_8003a444:
     R(7) = R(7) + 0x40u;
@@ -21979,9 +21979,9 @@ L_8003a48c:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     c->cycles += 26;
 L_8003a58c:
@@ -22084,9 +22084,9 @@ L_8003a5d4:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     c->cycles += 26;
 L_8003a6d4:
@@ -22167,9 +22167,9 @@ L_8003a738:
         c->cycles += 7;
         if (t) { goto L_8003a82c; }
     }
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x10u, gte_read_data(13));
-    MEM_WW(R(6) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x10u, 13);
+    gte_store_sxy(R(6) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -22179,7 +22179,7 @@ L_8003a738:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(6) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x20u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -22276,9 +22276,9 @@ L_8003a888:
         c->cycles += 7;
         if (t) { goto L_8003a97c; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -22288,7 +22288,7 @@ L_8003a888:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -22384,9 +22384,9 @@ L_8003a9c4:
         c->cycles += 7;
         if (t) { goto L_8003aaf4; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(14) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(4) - 0x1du);
     R(2) = 0x800000u;
@@ -22421,7 +22421,7 @@ L_8003a9c4:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     c->cycles += 24;
 L_8003aaf4:
@@ -22502,9 +22502,9 @@ L_8003ab3c:
         c->cycles += 7;
         if (t) { goto L_8003ac6c; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(14) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(4) - 0x1du);
     R(2) = 0x800000u;
@@ -22539,7 +22539,7 @@ L_8003ab3c:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     c->cycles += 24;
 L_8003ac6c:
@@ -22633,9 +22633,9 @@ L_8003acc8:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x14u, gte_read_data(13));
-    MEM_WW(R(6) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x14u, 13);
+    gte_store_sxy(R(6) + 0x20u, 14);
     c->cycles += 22;
 L_8003ad90:
     R(6) = R(6) + 0x50u;
@@ -22727,9 +22727,9 @@ L_8003ade8:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     c->cycles += 22;
 L_8003aeac:
     R(7) = R(7) + 0x50u;
@@ -22843,9 +22843,9 @@ L_8003aeec:
     R(10) = MEM_RW(R(4) + 0x10u);
     R(11) = MEM_RW(R(4) + 0x14u);
     R(12) = MEM_RW(R(4) + 0x18u);
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0x10u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
@@ -22974,9 +22974,9 @@ L_8003b080:
     R(10) = MEM_RW(R(4) + 0x10u);
     R(11) = MEM_RW(R(4) + 0x14u);
     R(12) = MEM_RW(R(4) + 0x18u);
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0x10u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
@@ -23071,9 +23071,9 @@ L_8003b238:
         c->cycles += 7;
         if (t) { goto L_8003b32c; }
     }
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x14u, gte_read_data(13));
-    MEM_WW(R(6) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x14u, 13);
+    gte_store_sxy(R(6) + 0x20u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -23083,7 +23083,7 @@ L_8003b238:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(6) + 0x2cu, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x2cu, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -23178,9 +23178,9 @@ L_8003b384:
         c->cycles += 7;
         if (t) { goto L_8003b478; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -23206,7 +23206,7 @@ L_8003b384:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x2cu, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x2cu, 14);
     c->cycles += 20;
 L_8003b478:
     R(7) = R(7) + 0x68u;
@@ -23300,9 +23300,9 @@ L_8003b4b8:
         c->cycles += 7;
         if (t) { goto L_8003b654; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     gte_command(0x4a180001u);
     gte_write_data(2, MEM_RW(R(11) + 0x0u));
     gte_write_data(3, MEM_RW(R(11) + 0x4u));
@@ -23343,7 +23343,7 @@ L_8003b4b8:
     R(10) = MEM_RW(R(4) + 0x14u);
     R(11) = MEM_RW(R(4) + 0x18u);
     R(12) = MEM_RW(R(4) + 0x1cu);
-    MEM_WW(R(7) + 0x2cu, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x2cu, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0x10u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
@@ -23452,9 +23452,9 @@ L_8003b698:
         c->cycles += 7;
         if (t) { goto L_8003b834; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     gte_command(0x4a180001u);
     gte_write_data(2, MEM_RW(R(11) + 0x0u));
     gte_write_data(3, MEM_RW(R(11) + 0x4u));
@@ -23495,7 +23495,7 @@ L_8003b698:
     R(10) = MEM_RW(R(4) + 0x14u);
     R(11) = MEM_RW(R(4) + 0x18u);
     R(12) = MEM_RW(R(4) + 0x1cu);
-    MEM_WW(R(7) + 0x2cu, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x2cu, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0x10u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
@@ -23610,9 +23610,9 @@ L_8003b898:
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
     MEM_WW(R(6) + 0x4u, gte_read_data(22));
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0xcu, gte_read_data(13));
-    MEM_WW(R(6) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0xcu, 13);
+    gte_store_sxy(R(6) + 0x10u, 14);
     R(6) = R(6) + 0x14u;
     c->cycles += 24;
 L_8003b980:
@@ -23713,9 +23713,9 @@ L_8003b9d8:
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     R(7) = R(7) + 0x14u;
     c->cycles += 24;
 L_8003bac0:
@@ -23817,9 +23817,9 @@ L_8003bb04:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     R(7) = R(7) + 0x14u;
     c->cycles += 27;
@@ -23922,9 +23922,9 @@ L_8003bc4c:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     R(7) = R(7) + 0x14u;
     c->cycles += 27;
@@ -24012,9 +24012,9 @@ L_8003bda8:
         if (t) { goto L_8003bebc; }
     }
     MEM_WW(R(6) + 0x4u, gte_read_data(22));
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0xcu, gte_read_data(13));
-    MEM_WW(R(6) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0xcu, 13);
+    gte_store_sxy(R(6) + 0x10u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -24024,7 +24024,7 @@ L_8003bda8:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(6) + 0x14u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x14u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -24128,9 +24128,9 @@ L_8003bf14:
         if (t) { goto L_8003c028; }
     }
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -24140,7 +24140,7 @@ L_8003bf14:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(7) + 0x14u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x14u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -24242,9 +24242,9 @@ L_8003c06c:
         c->cycles += 7;
         if (t) { goto L_8003c1a0; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -24273,7 +24273,7 @@ L_8003c06c:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x14u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x14u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     R(7) = R(7) + 0x18u;
     c->cycles += 25;
@@ -24360,9 +24360,9 @@ L_8003c1e4:
         c->cycles += 7;
         if (t) { goto L_8003c318; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0xcu, gte_read_data(13));
-    MEM_WW(R(7) + 0x10u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0xcu, 13);
+    gte_store_sxy(R(7) + 0x10u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -24391,7 +24391,7 @@ L_8003c1e4:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x14u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x14u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     R(7) = R(7) + 0x18u;
     c->cycles += 25;
@@ -24480,9 +24480,9 @@ L_8003c378:
     MEM_WW(R(6) + 0x4u, gte_read_data(20));
     MEM_WW(R(6) + 0xcu, gte_read_data(21));
     MEM_WW(R(6) + 0x14u, gte_read_data(22));
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x10u, gte_read_data(13));
-    MEM_WW(R(6) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x10u, 13);
+    gte_store_sxy(R(6) + 0x18u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -24599,9 +24599,9 @@ L_8003c4c0:
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(20));
     MEM_WW(R(7) + 0x14u, gte_read_data(20));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     R(7) = R(7) + 0x1cu;
     c->cycles += 26;
 L_8003c5ac:
@@ -24715,9 +24715,9 @@ L_8003c5e8:
     R(10) = MEM_RW(R(4) + 0x8u);
     R(11) = MEM_RW(R(4) + 0xcu);
     R(12) = MEM_RW(R(4) + 0x10u);
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(21));
     MEM_WW(R(7) + 0x14u, gte_read_data(22));
@@ -24845,9 +24845,9 @@ L_8003c778:
     R(10) = MEM_RW(R(4) + 0x8u);
     R(11) = MEM_RW(R(4) + 0xcu);
     R(12) = MEM_RW(R(4) + 0x10u);
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(21));
     MEM_WW(R(7) + 0x14u, gte_read_data(22));
@@ -24942,9 +24942,9 @@ L_8003c928:
         c->cycles += 7;
         if (t) { goto L_8003ca54; }
     }
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x10u, gte_read_data(13));
-    MEM_WW(R(6) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x10u, 13);
+    gte_store_sxy(R(6) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(14) = 0x80080000u;
     R(14) = MEM_RW(R(14) + 0x71f0u);
@@ -24966,7 +24966,7 @@ L_8003c928:
     R(13) = MEM_RW(R(3) + 0x10u);
     R(14) = gte_read_data(7);
     MEM_WW(R(6) + 0x1cu, R(13));
-    MEM_WW(R(6) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x20u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -25067,9 +25067,9 @@ L_8003caa8:
         c->cycles += 7;
         if (t) { goto L_8003cbc8; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = gte_read_ctrl(31);
     {
@@ -25099,7 +25099,7 @@ L_8003caa8:
     MEM_WW(R(7) + 0xcu, gte_read_data(20));
     MEM_WW(R(7) + 0x14u, gte_read_data(20));
     MEM_WW(R(7) + 0x1cu, gte_read_data(20));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     R(7) = R(7) + 0x24u;
     c->cycles += 25;
 L_8003cbc8:
@@ -25187,9 +25187,9 @@ L_8003cc04:
         c->cycles += 7;
         if (t) { goto L_8003cda4; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(14) = 0x80080000u;
     R(14) = MEM_RW(R(14) + 0x71f0u);
@@ -25236,7 +25236,7 @@ L_8003cc04:
     R(10) = MEM_RW(R(4) + 0x8u);
     R(11) = MEM_RW(R(4) + 0xcu);
     R(12) = MEM_RW(R(4) + 0x10u);
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(21));
     MEM_WW(R(7) + 0x14u, gte_read_data(22));
@@ -25338,9 +25338,9 @@ L_8003cde4:
         c->cycles += 7;
         if (t) { goto L_8003cf84; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(14) = 0x80080000u;
     R(14) = MEM_RW(R(14) + 0x71f0u);
@@ -25387,7 +25387,7 @@ L_8003cde4:
     R(10) = MEM_RW(R(4) + 0x8u);
     R(11) = MEM_RW(R(4) + 0xcu);
     R(12) = MEM_RW(R(4) + 0x10u);
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0xcu, gte_read_data(21));
     MEM_WW(R(7) + 0x14u, gte_read_data(22));
@@ -25513,9 +25513,9 @@ L_8003cfe8:
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
     MEM_WW(R(6) + 0x4u, gte_read_data(22));
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x10u, gte_read_data(13));
-    MEM_WW(R(6) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x10u, 13);
+    gte_store_sxy(R(6) + 0x18u, 14);
     R(6) = R(6) + 0x20u;
     c->cycles += 24;
 L_8003d100:
@@ -25625,9 +25625,9 @@ L_8003d158:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     R(7) = R(7) + 0x20u;
     c->cycles += 23;
 L_8003d264:
@@ -25739,9 +25739,9 @@ L_8003d2a8:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     R(7) = R(7) + 0x20u;
     c->cycles += 27;
@@ -25854,9 +25854,9 @@ L_8003d418:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     R(7) = R(7) + 0x20u;
     c->cycles += 27;
@@ -25949,9 +25949,9 @@ L_8003d598:
         c->cycles += 7;
         if (t) { goto L_8003d6e4; }
     }
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x10u, gte_read_data(13));
-    MEM_WW(R(6) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x10u, 13);
+    gte_store_sxy(R(6) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = R(4) - 0x20u;
     R(3) = MEM_RW(R(2) + 0x4u);
@@ -25970,7 +25970,7 @@ L_8003d598:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(6) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x20u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -26067,9 +26067,9 @@ L_8003d73c:
         c->cycles += 7;
         if (t) { goto L_8003d880; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = R(4) - 0x20u;
     R(3) = MEM_RW(R(2) + 0x4u);
@@ -26098,7 +26098,7 @@ L_8003d73c:
     }
     gte_command(0x4b68002eu);
     R(14) = gte_read_data(7);
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -26204,9 +26204,9 @@ L_8003d8c4:
         c->cycles += 7;
         if (t) { goto L_8003da2c; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = R(4) - 0x20u;
     R(3) = MEM_RW(R(2) + 0x4u);
@@ -26244,7 +26244,7 @@ L_8003d8c4:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     R(7) = R(7) + 0x28u;
     c->cycles += 25;
@@ -26335,9 +26335,9 @@ L_8003da70:
         c->cycles += 7;
         if (t) { goto L_8003dbd8; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(2) = R(4) - 0x20u;
     R(3) = MEM_RW(R(2) + 0x4u);
@@ -26375,7 +26375,7 @@ L_8003da70:
     R(2) = R(3) >> 8;
     R(3) = R(2) ^ R(13);
     MEM_WW(R(14), R(3));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(22));
     R(7) = R(7) + 0x28u;
     c->cycles += 25;
@@ -26473,9 +26473,9 @@ L_8003dc38:
     }
     gte_command(0x4b58002du);
     R(14) = gte_read_data(7);
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x14u, gte_read_data(13));
-    MEM_WW(R(6) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x14u, 13);
+    gte_store_sxy(R(6) + 0x20u, 14);
     MEM_WW(R(6) + 0x4u, gte_read_data(20));
     MEM_WW(R(6) + 0x10u, gte_read_data(21));
     MEM_WW(R(6) + 0x1cu, gte_read_data(22));
@@ -26587,9 +26587,9 @@ L_8003ddb0:
     MEM_WW(R(7) + 0xcu, gte_read_data(20));
     MEM_WW(R(7) + 0x14u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -26725,9 +26725,9 @@ L_8003def4:
     MEM_WW(R(7) + 0xcu, R(10));
     MEM_WW(R(7) + 0x18u, R(11));
     MEM_WW(R(7) + 0x24u, R(12));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0x10u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
@@ -26865,9 +26865,9 @@ L_8003e0a8:
     MEM_WW(R(7) + 0xcu, R(10));
     MEM_WW(R(7) + 0x18u, R(11));
     MEM_WW(R(7) + 0x24u, R(12));
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0x10u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
@@ -26981,9 +26981,9 @@ L_8003e278:
         c->cycles += 7;
         if (t) { goto L_8003e3e0; }
     }
-    MEM_WW(R(6) + 0x8u, gte_read_data(12));
-    MEM_WW(R(6) + 0x14u, gte_read_data(13));
-    MEM_WW(R(6) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x8u, 12);
+    gte_store_sxy(R(6) + 0x14u, 13);
+    gte_store_sxy(R(6) + 0x20u, 14);
     gte_command(0x4a180001u);
     R(13) = MEM_RW(R(3) + 0x4u);
     R(14) = MEM_RW(R(3) + 0x8u);
@@ -27001,7 +27001,7 @@ L_8003e278:
     R(13) = MEM_RW(R(3) + 0x10u);
     R(14) = gte_read_data(7);
     MEM_WW(R(6) + 0x30u, R(13));
-    MEM_WW(R(6) + 0x2cu, gte_read_data(14));
+    gte_store_sxy(R(6) + 0x2cu, 14);
     MEM_WW(R(6) + 0x4u, gte_read_data(20));
     MEM_WW(R(6) + 0x10u, gte_read_data(21));
     MEM_WW(R(6) + 0x1cu, gte_read_data(22));
@@ -27101,9 +27101,9 @@ L_8003e434:
         c->cycles += 7;
         if (t) { goto L_8003e578; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4a180001u);
     R(13) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(3) + 0x3u);
     R(14) = 0x80080000u;
@@ -27132,7 +27132,7 @@ L_8003e434:
     R(13) = MEM_RW(R(3) + 0x10u);
     R(14) = gte_read_data(7);
     MEM_WW(R(7) + 0x24u, R(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x20u, 14);
     R(14) = R(14) - R(9);
     R(14) = R(14) >> (R(15) & 31);
     R(14) = R(14) & 0xffffu;
@@ -27246,9 +27246,9 @@ L_8003e5b4:
         c->cycles += 7;
         if (t) { goto L_8003e780; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     gte_command(0x4a180001u);
     gte_write_data(2, MEM_RW(R(11) + 0x0u));
     gte_write_data(3, MEM_RW(R(11) + 0x4u));
@@ -27297,7 +27297,7 @@ L_8003e5b4:
     R(10) = MEM_RW(R(4) + 0x14u);
     R(11) = MEM_RW(R(4) + 0x18u);
     R(12) = MEM_RW(R(4) + 0x1cu);
-    MEM_WW(R(7) + 0x2cu, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x2cu, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0x10u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
@@ -27409,9 +27409,9 @@ L_8003e7c0:
         c->cycles += 7;
         if (t) { goto L_8003e98c; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x14u, gte_read_data(13));
-    MEM_WW(R(7) + 0x20u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x14u, 13);
+    gte_store_sxy(R(7) + 0x20u, 14);
     gte_command(0x4a180001u);
     gte_write_data(2, MEM_RW(R(11) + 0x0u));
     gte_write_data(3, MEM_RW(R(11) + 0x4u));
@@ -27460,7 +27460,7 @@ L_8003e7c0:
     R(10) = MEM_RW(R(4) + 0x14u);
     R(11) = MEM_RW(R(4) + 0x18u);
     R(12) = MEM_RW(R(4) + 0x1cu);
-    MEM_WW(R(7) + 0x2cu, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x2cu, 14);
     MEM_WW(R(7) + 0x4u, gte_read_data(20));
     MEM_WW(R(7) + 0x10u, gte_read_data(21));
     MEM_WW(R(7) + 0x1cu, gte_read_data(22));
@@ -30748,9 +30748,9 @@ L_80040e34:
         c->cycles += 8;
         if (t) { goto L_80040fc0; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4b58002du);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     R(2) = R(10) + 0x4u;
@@ -30879,9 +30879,9 @@ L_80041020:
         c->cycles += 8;
         if (t) { goto L_800411ac; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4b58002du);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     R(2) = R(10) + 0x4u;
@@ -31010,9 +31010,9 @@ L_8004120c:
         c->cycles += 8;
         if (t) { goto L_80041394; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4b58002du);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     R(2) = R(10) + 0x4u;
@@ -31141,9 +31141,9 @@ L_800413f8:
         c->cycles += 8;
         if (t) { goto L_80041580; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4b58002du);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     R(2) = R(10) + 0x4u;
@@ -31277,9 +31277,9 @@ L_800415e4:
         c->cycles += 8;
         if (t) { goto L_80041788; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4b58002du);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     gte_write_data(6, MEM_RW(R(8) + 0x0u));
@@ -31412,9 +31412,9 @@ L_800417e8:
         c->cycles += 8;
         if (t) { goto L_8004198c; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4b58002du);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     gte_write_data(6, MEM_RW(R(8) + 0x0u));
@@ -31546,9 +31546,9 @@ L_800419ec:
         c->cycles += 8;
         if (t) { goto L_80041b84; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4b58002du);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     gte_write_data(6, MEM_RW(R(8) + 0x0u));
@@ -31680,9 +31680,9 @@ L_80041be8:
         c->cycles += 8;
         if (t) { goto L_80041d80; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     gte_command(0x4b58002du);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     gte_write_data(6, MEM_RW(R(8) + 0x0u));
@@ -31817,9 +31817,9 @@ L_80041dec:
         c->cycles += 8;
         if (t) { goto L_8004200c; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     R(2) = MEM_RH(R(9) + 0x8u);
     R(2) = R(2) << 3;
     R(2) = R(5) + R(2);
@@ -31836,7 +31836,7 @@ L_80041dec:
         c->cycles += 20;
         if (t) { goto L_8004200c; }
     }
-    MEM_WW(R(2) + 0x0u, gte_read_data(14));
+    gte_store_sxy(R(2) + 0x0u, 14);
     gte_command(0x4b68002eu);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     gte_write_data(6, MEM_RW(R(8) + 0x0u));
@@ -31981,9 +31981,9 @@ L_80042074:
         c->cycles += 8;
         if (t) { goto L_80042294; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     R(2) = MEM_RH(R(9) + 0x8u);
     R(2) = R(2) << 3;
     R(2) = R(5) + R(2);
@@ -32000,7 +32000,7 @@ L_80042074:
         c->cycles += 20;
         if (t) { goto L_80042294; }
     }
-    MEM_WW(R(2) + 0x0u, gte_read_data(14));
+    gte_store_sxy(R(2) + 0x0u, 14);
     gte_command(0x4b68002eu);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     gte_write_data(6, MEM_RW(R(8) + 0x0u));
@@ -32140,9 +32140,9 @@ L_800422fc:
         c->cycles += 8;
         if (t) { goto L_80042504; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     R(2) = MEM_RH(R(8) + 0x2u);
     R(2) = R(2) << 3;
     R(2) = R(5) + R(2);
@@ -32159,7 +32159,7 @@ L_800422fc:
         c->cycles += 20;
         if (t) { goto L_80042504; }
     }
-    MEM_WW(R(2) + 0x0u, gte_read_data(14));
+    gte_store_sxy(R(2) + 0x0u, 14);
     gte_command(0x4b68002eu);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     R(2) = R(10) + 0x4u;
@@ -32300,9 +32300,9 @@ L_8004256c:
         c->cycles += 8;
         if (t) { goto L_80042774; }
     }
-    MEM_WW(R(7) + 0x8u, gte_read_data(12));
-    MEM_WW(R(7) + 0x10u, gte_read_data(13));
-    MEM_WW(R(7) + 0x18u, gte_read_data(14));
+    gte_store_sxy(R(7) + 0x8u, 12);
+    gte_store_sxy(R(7) + 0x10u, 13);
+    gte_store_sxy(R(7) + 0x18u, 14);
     R(2) = MEM_RH(R(8) + 0x2u);
     R(2) = R(2) << 3;
     R(2) = R(5) + R(2);
@@ -32319,7 +32319,7 @@ L_8004256c:
         c->cycles += 20;
         if (t) { goto L_80042774; }
     }
-    MEM_WW(R(2) + 0x0u, gte_read_data(14));
+    gte_store_sxy(R(2) + 0x0u, 14);
     gte_command(0x4b68002eu);
     MEM_WW(R(14) + 0x0u, gte_read_data(7));
     R(2) = R(10) + 0x4u;

@@ -12,6 +12,7 @@
 
 #include "config.h"
 #include "hostinput.h"
+int gfx_scale();
 #include "overlay.h"
 #include "keybinds.h"
 #include "app_icon.h"
@@ -175,7 +176,7 @@ void gl_platform_release_current() {
 // Controller vibration (DualShock motors driven by the game)
 void platform_rumble(int small_on, int large) {
     static int last_s = -1, last_l = -1;
-    if ((!g_pad && !g_joy) || !g_cfg.vibration) return;
+    if (!g_pad && !g_joy) return;
     if (small_on == last_s && large == last_l) return;
     last_s = small_on; last_l = large;
     Uint16 lo = (Uint16)(large * 257), hi = small_on ? 0xc000 : 0;
@@ -411,12 +412,12 @@ void gl_platform_present(unsigned tex, int w, int h) {
 // window size) averages a grid of bilinear taps across each window pixel's footprint
 // so the extra resolution becomes anti-aliasing instead of shimmer; upscaling is bilinear.
 static GLuint g_scale_prog = 0, g_scale_vao = 0;
-static GLint g_u_src = -1, g_u_scale = -1, g_u_rect = -1;
+static GLint g_u_src = -1, g_u_scale = -1, g_u_rect = -1, g_u_crt = -1, g_u_lines = -1;
 static void init_scaler() {
     const char* vs = "#version 330 core\nuniform vec4 u_rect; out vec2 uv;\n"
         "void main(){ vec2 p = vec2(gl_VertexID & 1, gl_VertexID >> 1); uv = vec2(p.x, p.y);\n"
         " vec2 q = u_rect.xy + p * u_rect.zw; gl_Position = vec4(q.x * 2.0 - 1.0, 1.0 - q.y * 2.0, 0.0, 1.0); }\n";
-    const char* fs = "#version 330 core\nin vec2 uv; uniform sampler2D u_src; uniform vec2 u_scale; out vec4 o;\n"
+    const char* fs = "#version 330 core\nin vec2 uv; uniform sampler2D u_src; uniform vec2 u_scale; uniform int u_crt; uniform float u_lines; out vec4 o;\n"
         "void main(){\n"
         " vec2 ts = vec2(textureSize(u_src, 0));\n"
         " vec2 n = clamp(ceil(u_scale), vec2(1.0), vec2(4.0));\n"   // taps per axis
@@ -427,7 +428,25 @@ static void init_scaler() {
         "  vec2 off = (vec2(i, j) + 0.5) / n - 0.5;\n"
         "  acc += texture(u_src, uv + off * fp);\n"
         " }\n"
-        " o = vec4(acc.rgb / (n.x * n.y), 1.0); }\n";
+        " vec3 c = acc.rgb / (n.x * n.y);\n"
+        " if (u_crt > 0) {\n"
+        // scanlines: a soft beam profile per original line, brightness kept about the same
+        "  float d = fract(uv.y * u_lines) - 0.5;\n"
+        "  float beam = exp(-d * d * 14.0);\n"
+        "  vec3 lin = pow(c, vec3(2.2));\n"
+        "  float wgt = mix(0.35, 1.0, beam);\n"
+        "  lin *= wgt * 1.35;\n"
+        "  if (u_crt > 1) {\n"
+        // aperture grille (RGB stripes per window pixel column) and a gentle bloom of bright areas
+        "   int col = int(gl_FragCoord.x) % 3;\n"
+        "   vec3 m = col == 0 ? vec3(1.0, 0.7, 0.7) : col == 1 ? vec3(0.7, 1.0, 0.7) : vec3(0.7, 0.7, 1.0);\n"
+        "   lin *= m * 1.25;\n"
+        "   vec3 b = texture(u_src, uv + vec2(0.0, 1.0 / u_lines)).rgb + texture(u_src, uv - vec2(0.0, 1.0 / u_lines)).rgb;\n"
+        "   lin += pow(b * 0.5, vec3(2.2)) * 0.12;\n"
+        "  }\n"
+        "  c = pow(clamp(lin, 0.0, 1.0), vec3(1.0 / 2.2));\n"
+        " }\n"
+        " o = vec4(c, 1.0); }\n";
     auto sh = [](GLenum t, const char* src) { GLuint s = glCreateShader(t); glShaderSource(s, 1, &src, nullptr); glCompileShader(s); return s; };
     g_scale_prog = glCreateProgram();
     glAttachShader(g_scale_prog, sh(GL_VERTEX_SHADER, vs));
@@ -436,6 +455,8 @@ static void init_scaler() {
     g_u_src = glGetUniformLocation(g_scale_prog, "u_src");
     g_u_scale = glGetUniformLocation(g_scale_prog, "u_scale");
     g_u_rect = glGetUniformLocation(g_scale_prog, "u_rect");
+    g_u_crt = glGetUniformLocation(g_scale_prog, "u_crt");
+    g_u_lines = glGetUniformLocation(g_scale_prog, "u_lines");
     glGenVertexArrays(1, &g_scale_vao);
 }
 
@@ -484,6 +505,9 @@ static void present_thread() {
         glUniform1i(g_u_src, 0);
         glUniform2f(g_u_scale, (float)sl.w / dw, (float)sl.h / dh);
         glUniform4f(g_u_rect, (float)dx / ww, (float)dy / wh, (float)dw / ww, (float)dh / wh);
+        // the CRT look needs at least ~3 window pixels per original line
+        glUniform1i(g_u_crt, dh >= 600 ? g_cfg.crt : 0);
+        glUniform1f(g_u_lines, sl.h > 300 * gfx_scale() ? 480.0f : 240.0f);
         glBindVertexArray(g_scale_vao);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         overlay_draw(ww, wh);

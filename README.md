@@ -45,6 +45,11 @@ saves can be copied to and from emulators. Settings are in `einhander.ini`.
 | Widescreen 16:9 | wider view of the 3D world |
 | VSync, Fullscreen (F11 / Alt+Enter) | |
 | Scaling | sharp or smooth |
+| Texture filtering | off (original), smooth 3D (2D art and text stay sharp), smooth everything - bilinear on the palette-decoded texels, so transparent edges stay clean |
+| Colour | true colour, or the original 15-bit colour with the PlayStation's dither pattern |
+| Precise geometry | sub-pixel polygon positions and perspective-correct textures (no wobble or texture warping), PGXP-style |
+| Screen filter | off, scanlines, CRT (scanlines + aperture grille + glow; needs a window 600+ pixels tall) |
+| Audio resampling | standard, or high quality (windowed-sinc) for the streamed XA music and voices |
 | Swap A/B and X/Y | face buttons by position |
 | Fast CD loading | levels load faster; music and movies stay real-time |
 | Game speed | 1x-8x fast-forward (hold Tab for a burst) |

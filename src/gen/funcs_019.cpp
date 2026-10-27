@@ -14057,9 +14057,9 @@ void o17_80177e6c(Cpu* c) {
     R(3) = R(6) + 0xcu;
     MEM_WB(R(6) + 0x7u, R(2));
     R(2) = R(6) + 0x10u;
-    MEM_WW(R(4) + 0x0u, gte_read_data(12));
-    MEM_WW(R(3) + 0x0u, gte_read_data(13));
-    MEM_WW(R(2) + 0x0u, gte_read_data(14));
+    gte_store_sxy(R(4) + 0x0u, 12);
+    gte_store_sxy(R(3) + 0x0u, 13);
+    gte_store_sxy(R(2) + 0x0u, 14);
     R(2) = R(29) + 0x10u;
     R(12) = gte_read_data(19);
     R(12) = (uint32_t)((int32_t)R(12) >> 2);
@@ -15191,7 +15191,7 @@ L_80178cb4:
     gte_write_data(1, MEM_RW(R(5) + 0x4u));
     R(5) = R(5) + 0x8u;
     gte_command(0x4a180001u);
-    MEM_WW(R(4) + 0x0u, gte_read_data(14));
+    gte_store_sxy(R(4) + 0x0u, 14);
     R(2) = (uint32_t)((int32_t)R(18) >> 1);
     R(2) = R(2) << 2;
     R(3) = R(7) + R(2);

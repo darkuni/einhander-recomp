@@ -74,6 +74,17 @@ unknown overlays were located (`LOG=cdmap` logs which disc sector went to which 
   RGBA8 VRAM texture (true colour, mask bit in alpha). Texture pages and CLUTs are sampled in the
   shader from a copy of VRAM refreshed only where drawing touched it. Semi-transparency via
   dual-source blending (B-F mode in two passes). 24-bit display mode decoded in a shader for movies.
+- **Enhancements** (all optional): texture filtering in the draw shader (four palette-decoded
+  texels blended among the opaque ones, the shape taken from the nearest texel, clamped to the
+  primitive's own texel bounds so atlas neighbours do not bleed); original 15-bit colour with the
+  4x4 dither matrix per original pixel; precise geometry (`precise.cpp`): the GTE keeps an
+  unrounded copy of each projected vertex (X = OFX + IR1 * H / SZ with the unshifted MAC values)
+  next to the SXY FIFO, `swc2` of SXY stores it in a shadow of the RAM word (the recompiler emits
+  `gte_store_sxy`), and the GPU uses it for polygon vertices whose DMA source word still holds
+  that value (or, for copied words, matches a projection from this frame); with the depth it also
+  gives perspective-correct texturing. About 87% of in-game polygon vertices come out precise.
+  XA audio can be resampled with a 32-tap Kaiser-windowed sinc instead of linear; the screen
+  filter is part of the final scaling shader.
 - **GTE**: full command set per psx-spx (UNR divide, flags, IR3 quirk, MVMVA far-colour bug).
 - **SPU**: 24 voices, Gaussian interpolation (hardware table), ADSR/sweep envelopes, pitch
   modulation, noise, reverb with the 39-tap resampling FIR, CD audio input and capture buffers.

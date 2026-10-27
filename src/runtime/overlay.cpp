@@ -39,6 +39,11 @@ static const std::vector<Item>& items() {
         {"VSync", {"Off", "On"}, nullptr},
         {"Fullscreen", {"Off", "On"}, "Also F11 or Alt+Enter."},
         {"Scaling", {"Sharp", "Smooth"}, "How the picture is scaled to the window."},
+        {"Texture filtering", {"Off (original)", "Smooth 3D", "Smooth all"}, "Smooth 3D keeps the 2D art and text sharp."},
+        {"Colour", {"True colour", "Original (dithered)"}, "Original: the PlayStation's 15-bit colour and dither pattern."},
+        {"Precise geometry", {"Off (original)", "On"}, "No wobbling polygons or warping textures."},
+        {"Screen filter", {"Off", "Scanlines", "CRT"}, "Needs a window at least 600 pixels tall."},
+        {"Audio resampling", {"Standard", "High quality"}, "Cleaner streamed music and voices."},
         {"Swap A/B and X/Y", {"Off", "On"}, "Gamepad: use the face buttons by position (Nintendo style)."},
         {"Fast CD loading", {"Off", "On"}, "Loads levels faster; music and movies stay real-time."},
         {"Game speed", {"Normal", "2x", "3x", "4x", "5x", "6x", "7x", "8x"}, "Fast-forward. Hold Tab for a burst."},
@@ -57,10 +62,15 @@ static int get_value(int i) {
         case 2: return g_cfg.vsync;
         case 3: return g_cfg.fullscreen;
         case 4: return g_cfg.smooth_scaling;
-        case 5: return g_cfg.swap_ab_xy;
-        case 6: return g_cfg.fast_cd;
-        case 7: return std::max(1, std::min(8, g_cfg.speed)) - 1;
-        case 8: return g_cfg.show_perf;
+        case 5: return g_cfg.texture_filter;
+        case 6: return g_cfg.dither;
+        case 7: return g_cfg.subpixel;
+        case 8: return g_cfg.crt;
+        case 9: return g_cfg.hq_audio;
+        case 10: return g_cfg.swap_ab_xy;
+        case 11: return g_cfg.fast_cd;
+        case 12: return std::max(1, std::min(8, g_cfg.speed)) - 1;
+        case 13: return g_cfg.show_perf;
     }
     return 0;
 }
@@ -71,10 +81,15 @@ static void set_value(int i, int v) {
         case 2: g_cfg.vsync = v; break;
         case 3: g_cfg.fullscreen = v; break;
         case 4: g_cfg.smooth_scaling = v; break;
-        case 5: g_cfg.swap_ab_xy = v; break;
-        case 6: g_cfg.fast_cd = v; break;
-        case 7: g_cfg.speed = v + 1; break;
-        case 8: g_cfg.show_perf = v; break;
+        case 5: g_cfg.texture_filter = v; break;
+        case 6: g_cfg.dither = v; break;
+        case 7: g_cfg.subpixel = v; break;
+        case 8: g_cfg.crt = v; break;
+        case 9: g_cfg.hq_audio = v; break;
+        case 10: g_cfg.swap_ab_xy = v; break;
+        case 11: g_cfg.fast_cd = v; break;
+        case 12: g_cfg.speed = v + 1; break;
+        case 13: g_cfg.show_perf = v; break;
     }
     config_save();
 }

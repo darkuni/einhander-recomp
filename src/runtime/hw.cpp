@@ -47,6 +47,7 @@ void log_printf(const char* cat, const char* fmt, ...) {
 }
 
 // ---------------------------------------------------------------- scheduler
+extern uint32_t g_gp0_addr;
 static int64_t g_ev[EV_COUNT];
 static const int64_t NEVER = INT64_MAX;
 
@@ -261,8 +262,10 @@ static void dma_run(int ch) {
                 uint32_t w;
                 addr = (addr + 4) & 0x1ffffc;
                 memcpy(&w, g_ram + addr, 4);
+                g_gp0_addr = 0x80000000u | addr;
                 gpu_write(0, w);
             }
+            g_gp0_addr = 0xffffffffu;
             cost += n + 1;
             a = hdr & 0xffffff;
             if (++guard > 1000000) { LOG("dma", "GPU linked list loop"); break; }
@@ -286,7 +289,7 @@ static void dma_run(int ch) {
                     memcpy(&w, g_ram + addr, 4);
                     switch (ch) {
                         case 0: mdec_dma_in(w); break;
-                        case 2: gpu_write(0, w); break;
+                        case 2: g_gp0_addr = 0x80000000u | addr; gpu_write(0, w); g_gp0_addr = 0xffffffffu; break;
                         case 4: spu_dma_write(w); break;
                         default: break;
                     }

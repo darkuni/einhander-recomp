@@ -7,6 +7,7 @@
 #include "discpack.h"
 #include <libchdr/chd.h>
 #include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -312,7 +313,68 @@ static std::vector<int16_t> g_xa_out;   // interleaved stereo at 44.1 kHz (resam
 static double g_xa_phase = 0;
 static int16_t g_xa_last[2] = {0, 0};
 
+// High-quality resampling: Kaiser-windowed sinc, 32 taps, 512 phases, cut off just below the
+// lower of the two Nyquist rates (so 18.9 kHz streams are not aliased either).
+static const int kTaps = 32, kPhases = 512;
+static std::vector<float> g_sinc;            // kPhases+1 rows of kTaps
+static int g_sinc_rate = 0;
+static std::vector<float> g_hq_hist[2];      // input history per channel
+static double g_hq_pos = 0;                  // position of the next output, in input samples from hist start
+
+static double bessel_i0(double x) {
+    double s = 1, t = 1;
+    for (int k = 1; k < 30; k++) { t *= (x / (2 * k)) * (x / (2 * k)); s += t; }
+    return s;
+}
+static void build_sinc(int rate) {
+    g_sinc_rate = rate;
+    g_sinc.assign((size_t)(kPhases + 1) * kTaps, 0.f);
+    double fc = 0.5 * std::min(1.0, 44100.0 / rate) * 0.92;   // cutoff, cycles per input sample
+    const double beta = 8.0, i0b = bessel_i0(beta);
+    for (int ph = 0; ph <= kPhases; ph++) {
+        double frac = (double)ph / kPhases, sum = 0;
+        float* row = &g_sinc[(size_t)ph * kTaps];
+        for (int k = 0; k < kTaps; k++) {
+            double x = (k - (kTaps / 2 - 1)) - frac;              // distance from the output point
+            double sinc = x == 0 ? 2 * fc : std::sin(2 * M_PI * fc * x) / (M_PI * x);
+            double r = x / (kTaps / 2.0);
+            double win = std::fabs(r) >= 1 ? 0 : bessel_i0(beta * std::sqrt(1 - r * r)) / i0b;
+            row[k] = (float)(sinc * win);
+            sum += row[k];
+        }
+        for (int k = 0; k < kTaps; k++) row[k] = (float)(row[k] / sum);
+    }
+}
+static void xa_resample_hq(const std::vector<int16_t>& lr, int rate) {
+    if (rate != g_sinc_rate) build_sinc(rate);
+    size_t n = lr.size() / 2;
+    for (int ch = 0; ch < 2; ch++) {
+        if (g_hq_hist[ch].empty()) g_hq_hist[ch].assign(kTaps, 0.f);
+        for (size_t i = 0; i < n; i++) g_hq_hist[ch].push_back(lr[i * 2 + ch]);
+    }
+    const double step = (double)rate / 44100.0;
+    size_t avail = g_hq_hist[0].size();
+    while (g_hq_pos + kTaps < (double)avail) {
+        size_t i0 = (size_t)g_hq_pos;
+        double fr = g_hq_pos - i0;
+        int ph = (int)(fr * kPhases + 0.5);
+        const float* row = &g_sinc[(size_t)ph * kTaps];
+        for (int ch = 0; ch < 2; ch++) {
+            const float* h = &g_hq_hist[ch][i0];
+            float acc = 0;
+            for (int k = 0; k < kTaps; k++) acc += h[k] * row[k];
+            g_xa_out.push_back((int16_t)std::clamp(acc, -32768.f, 32767.f));
+        }
+        g_hq_pos += step;
+    }
+    // drop consumed history
+    size_t drop = std::min((size_t)g_hq_pos, avail);
+    for (int ch = 0; ch < 2; ch++) g_hq_hist[ch].erase(g_hq_hist[ch].begin(), g_hq_hist[ch].begin() + drop);
+    g_hq_pos -= (double)drop;
+}
+
 static void xa_resample_push(const std::vector<int16_t>& lr, int rate) {
+    if (g_cfg.hq_audio) { xa_resample_hq(lr, rate); return; }
     // linear resampling to 44100 Hz
     double step = (double)rate / 44100.0;
     size_t n = lr.size() / 2;
