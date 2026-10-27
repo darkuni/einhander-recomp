@@ -113,7 +113,32 @@ static std::condition_variable g_pcv;
 static void present_thread();
 static thread_local bool t_current = false;
 
+// Window size: 240 lines times the resolution setting (or window_scale), shrunk to the largest
+// whole multiple that fits the desktop's usable area. Sizes are real pixels (DPI aware).
+static void window_size(int display, int* w, int* h) {
+    int scale = g_cfg.window_scale > 0 ? g_cfg.window_scale : g_cfg.resolution_scale;
+    SDL_Rect ub;
+    int max_h = 100000, max_w = 100000;
+    if (SDL_GetDisplayUsableBounds(display, &ub) == 0) { max_h = ub.h * 92 / 100; max_w = ub.w * 95 / 100; }
+    const int an = g_cfg.widescreen ? 16 : 4, ad = g_cfg.widescreen ? 9 : 3;
+    while (scale > 1 && (240 * scale > max_h || 240 * scale * an / ad > max_w)) scale--;
+    *h = 240 * scale;
+    *w = *h * an / ad;
+}
+
+void platform_fit_window() {
+    if (!g_win || g_cfg.fullscreen) return;
+    if (SDL_GetWindowFlags(g_win) & SDL_WINDOW_MAXIMIZED) SDL_RestoreWindow(g_win);
+    int w, h;
+    window_size(SDL_GetWindowDisplayIndex(g_win), &w, &h);
+    SDL_SetWindowSize(g_win, w, h);
+    SDL_SetWindowPosition(g_win, SDL_WINDOWPOS_CENTERED_DISPLAY(SDL_GetWindowDisplayIndex(g_win)),
+                          SDL_WINDOWPOS_CENTERED_DISPLAY(SDL_GetWindowDisplayIndex(g_win)));
+}
+
 bool gl_platform_init(int w, int h) {
+    // real pixels on scaled desktops (otherwise Windows stretches the window by the display scale)
+    SDL_SetHint("SDL_WINDOWS_DPI_AWARENESS", "permonitorv2");
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMECONTROLLER | SDL_INIT_EVENTS) != 0) {
         fprintf(stderr, "[sdl] init failed: %s\n", SDL_GetError());
         return false;
@@ -122,8 +147,9 @@ bool gl_platform_init(int w, int h) {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    int scale = g_cfg.window_scale;
-    int ww = (g_cfg.widescreen ? 854 : 640) * scale, wh = 480 * scale;
+    int ww, wh;
+    window_size(0, &ww, &wh);
+    fprintf(stderr, "[sdl] window %dx%d\n", ww, wh);
     Uint32 flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;
     if (g_cfg.fullscreen) flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
     g_win = SDL_CreateWindow(GAME_NAME " (native)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -310,7 +336,8 @@ static void update_input() {
 static std::atomic<bool> g_vsync_dirty{false};
 
 static void apply_action(int a) {
-    if (a == OV_FULLSCREEN) SDL_SetWindowFullscreen(g_win, g_cfg.fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+    if (a == OV_FULLSCREEN) { SDL_SetWindowFullscreen(g_win, g_cfg.fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0); if (!g_cfg.fullscreen) platform_fit_window(); }
+    else if (a == OV_WINDOW) platform_fit_window();
     else if (a == OV_VSYNC) g_vsync_dirty = true;
     else if (a == OV_QUIT) exit(0);
 }

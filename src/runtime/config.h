@@ -8,7 +8,7 @@ struct Config {
     bool widescreen = false;         // 16:9: wider 3D field of view (GTE projection hack), HUD stretched
     bool vsync = true;
     bool fullscreen = false;
-    int window_scale = 3;            // initial window height = 240 * window_scale
+    int window_scale = 0;            // window height = 240 * this (0 = follow resolution_scale)
     bool show_perf = false;
     bool swap_ab_xy = false;         // gamepad: Nintendo-style face button positions
     int speed = 1;                   // 1..8 (fast-forward)

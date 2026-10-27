@@ -168,6 +168,7 @@ int overlay_input(int key) {
         v = key == OV_KEY_LEFT ? (v + cnt - 1) % cnt : (v + 1) % cnt;
         set_value(g_sel, v);
         if (g_sel == 3) return OV_FULLSCREEN;
+        if (g_sel == 0 || g_sel == 1) return OV_WINDOW;
         if (g_sel == 2) return OV_VSYNC;
     }
     return OV_NONE;

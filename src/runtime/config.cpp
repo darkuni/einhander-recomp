@@ -16,7 +16,7 @@ static void set(const std::string& k, const std::string& v) {
     else if (k == "widescreen") g_cfg.widescreen = b();
     else if (k == "vsync") g_cfg.vsync = b();
     else if (k == "fullscreen") g_cfg.fullscreen = b();
-    else if (k == "window_scale") g_cfg.window_scale = clampi(1, 8);
+    else if (k == "window_size") g_cfg.window_scale = clampi(0, 8);   // (the old window_scale key is ignored)
     else if (k == "show_perf") g_cfg.show_perf = b();
     else if (k == "swap_ab_xy") g_cfg.swap_ab_xy = b();
     else if (k == "speed") g_cfg.speed = clampi(1, 8);
@@ -59,7 +59,7 @@ void config_load(const char* exe_path) {
         }
         fclose(f);
     }
-    const char* keys[] = {"resolution_scale", "widescreen", "vsync", "fullscreen", "window_scale", "show_perf",
+    const char* keys[] = {"resolution_scale", "widescreen", "vsync", "fullscreen", "window_size", "show_perf",
                           "swap_ab_xy", "speed", "texture_filter", "dither", "subpixel", "hq_audio", "crt", "vibration", "vibration_strength", "smooth_scaling", "fast_cd", "keys", "pad"};
     for (const char* k : keys) {
         std::string env = k;
@@ -82,8 +82,8 @@ void config_save() {
         "widescreen = %d\n"
         "vsync = %d\n"
         "fullscreen = %d\n"
-        "; Initial window size: 240 lines x this\n"
-        "window_scale = %d\n"
+        "; Window size: 240 lines x this (0 = match resolution_scale; shrunk to fit the desktop)\n"
+        "window_size = %d\n"
         "; Frame rate in the corner of the screen\n"
         "show_perf = %d\n"
         "; Gamepad: swap A<->B and X<->Y (use the face buttons by position)\n"
