@@ -44,6 +44,8 @@ static const std::vector<Item>& items() {
         {"Precise geometry", {"Off (original)", "On"}, "No wobbling polygons or warping textures."},
         {"Screen filter", {"Off", "Scanlines", "CRT"}, "Needs a window at least 600 pixels tall."},
         {"Audio resampling", {"Standard", "High quality"}, "Cleaner streamed music and voices."},
+        {"Vibration", {"Off", "Hits and explosions", "Also when firing"}, "Added by this port: the original game has no vibration."},
+        {"Vibration strength", {"25%", "50%", "75%", "100%"}, nullptr},
         {"Swap A/B and X/Y", {"Off", "On"}, "Gamepad: use the face buttons by position (Nintendo style)."},
         {"Fast CD loading", {"Off", "On"}, "Loads levels faster; music and movies stay real-time."},
         {"Game speed", {"Normal", "2x", "3x", "4x", "5x", "6x", "7x", "8x"}, "Fast-forward. Hold Tab for a burst."},
@@ -67,10 +69,12 @@ static int get_value(int i) {
         case 7: return g_cfg.subpixel;
         case 8: return g_cfg.crt;
         case 9: return g_cfg.hq_audio;
-        case 10: return g_cfg.swap_ab_xy;
-        case 11: return g_cfg.fast_cd;
-        case 12: return std::max(1, std::min(8, g_cfg.speed)) - 1;
-        case 13: return g_cfg.show_perf;
+        case 10: return g_cfg.vibration;
+        case 11: return std::clamp((g_cfg.vibration_strength + 12) / 25 - 1, 0, 3);
+        case 12: return g_cfg.swap_ab_xy;
+        case 13: return g_cfg.fast_cd;
+        case 14: return std::max(1, std::min(8, g_cfg.speed)) - 1;
+        case 15: return g_cfg.show_perf;
     }
     return 0;
 }
@@ -86,10 +90,12 @@ static void set_value(int i, int v) {
         case 7: g_cfg.subpixel = v; break;
         case 8: g_cfg.crt = v; break;
         case 9: g_cfg.hq_audio = v; break;
-        case 10: g_cfg.swap_ab_xy = v; break;
-        case 11: g_cfg.fast_cd = v; break;
-        case 12: g_cfg.speed = v + 1; break;
-        case 13: g_cfg.show_perf = v; break;
+        case 10: g_cfg.vibration = v; break;
+        case 11: g_cfg.vibration_strength = (v + 1) * 25; break;
+        case 12: g_cfg.swap_ab_xy = v; break;
+        case 13: g_cfg.fast_cd = v; break;
+        case 14: g_cfg.speed = v + 1; break;
+        case 15: g_cfg.show_perf = v; break;
     }
     config_save();
 }

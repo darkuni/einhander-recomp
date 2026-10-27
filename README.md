@@ -50,6 +50,7 @@ saves can be copied to and from emulators. Settings are in `einhander.ini`.
 | Precise geometry | sub-pixel polygon positions and perspective-correct textures (no wobble or texture warping), PGXP-style |
 | Screen filter | off, scanlines, CRT (scanlines + aperture grille + glow; needs a window 600+ pixels tall) |
 | Audio resampling | standard, or high quality (windowed-sinc) for the streamed XA music and voices |
+| Vibration | **new in this port** (the original has none): off, hits and explosions, or also when firing; strength 25-100% |
 | Swap A/B and X/Y | face buttons by position |
 | Fast CD loading | levels load faster; music and movies stay real-time |
 | Game speed | 1x-8x fast-forward (hold Tab for a burst) |
@@ -60,8 +61,8 @@ saves can be copied to and from emulators. Settings are in `einhander.ini`.
 ### Controls
 
 Any XInput/SDL gamepad works. Einhander reads only the d-pad and buttons, so the left stick also
-drives the d-pad. The game has no vibration support (it never sends motor data, and a reference
-emulator with a DualShock attached never rumbles either), so there is no vibration setting.
+drives the d-pad. The original game has no vibration (it never sends motor data, and a reference
+emulator with a DualShock attached never rumbles either); this port adds it - see Vibration above.
 Controllers SDL has no mapping for are used as generic joysticks (buttons, hats, axes), and a
 `gamecontrollerdb.txt` next to the exe adds more mappings. Start+Select opens the settings menu.
 Keyboard defaults: arrows = d-pad, X = Cross, Z = Circle, A = Square, S = Triangle, Q/W = L1/R1,

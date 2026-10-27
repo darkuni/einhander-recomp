@@ -16,6 +16,8 @@ struct Config {
     bool dither = false;             // original 15-bit colour + dither pattern (off = true colour)
     bool subpixel = true;            // precise vertex positions from the GTE (no polygon wobble)
     bool hq_audio = true;            // windowed-sinc resampling of streamed audio (off = original)
+    int vibration = 1;               // 0 off, 1 on (hits and explosions), 2 also weapons firing
+    int vibration_strength = 100;    // percent
     int crt = 0;                     // 0 off, 1 scanlines, 2 CRT (scanlines + aperture grille + soft glow)
     bool smooth_scaling = true;      // bilinear final scaling (off = sharp pixels)
     bool fast_cd = true;             // read game data faster than a real drive (music and movies stay real-time)

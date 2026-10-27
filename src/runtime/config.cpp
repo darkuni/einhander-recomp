@@ -25,6 +25,8 @@ static void set(const std::string& k, const std::string& v) {
     else if (k == "subpixel") g_cfg.subpixel = b();
     else if (k == "hq_audio") g_cfg.hq_audio = b();
     else if (k == "crt") g_cfg.crt = clampi(0, 2);
+    else if (k == "vibration") g_cfg.vibration = clampi(0, 2);
+    else if (k == "vibration_strength") g_cfg.vibration_strength = clampi(0, 100);
     else if (k == "smooth_scaling") g_cfg.smooth_scaling = b();
     else if (k == "fast_cd") g_cfg.fast_cd = b();
     else if (k == "keys") g_cfg.keys = v;
@@ -58,7 +60,7 @@ void config_load(const char* exe_path) {
         fclose(f);
     }
     const char* keys[] = {"resolution_scale", "widescreen", "vsync", "fullscreen", "window_scale", "show_perf",
-                          "swap_ab_xy", "speed", "texture_filter", "dither", "subpixel", "hq_audio", "crt", "smooth_scaling", "fast_cd", "keys", "pad"};
+                          "swap_ab_xy", "speed", "texture_filter", "dither", "subpixel", "hq_audio", "crt", "vibration", "vibration_strength", "smooth_scaling", "fast_cd", "keys", "pad"};
     for (const char* k : keys) {
         std::string env = k;
         std::transform(env.begin(), env.end(), env.begin(), ::toupper);
@@ -98,6 +100,10 @@ void config_save() {
         "hq_audio = %d\n"
         "; Screen filter: 0 = off, 1 = scanlines, 2 = CRT\n"
         "crt = %d\n"
+        "; Controller vibration (added by this port: the original has none): 0 = off, 1 = hits and explosions,\n"
+        "; 2 = also when firing. Strength in percent.\n"
+        "vibration = %d\n"
+        "vibration_strength = %d\n"
         "; Smooth (bilinear) scaling to the window; 0 = sharp pixels\n"
         "smooth_scaling = %d\n"
         "; Load game data faster than the original CD drive (music and movies still play in real time)\n"
@@ -107,6 +113,6 @@ void config_save() {
         "; Controller bindings, e.g. pad = cross=a,circle=b (edit in the F1 menu)\n"
         "pad = %s\n",
         g_cfg.resolution_scale, g_cfg.widescreen, g_cfg.vsync, g_cfg.fullscreen, g_cfg.window_scale, g_cfg.show_perf,
-        g_cfg.swap_ab_xy, g_cfg.speed, g_cfg.texture_filter, g_cfg.dither, g_cfg.subpixel, g_cfg.hq_audio, g_cfg.crt, g_cfg.smooth_scaling, g_cfg.fast_cd, g_cfg.keys.c_str(), g_cfg.pad.c_str());
+        g_cfg.swap_ab_xy, g_cfg.speed, g_cfg.texture_filter, g_cfg.dither, g_cfg.subpixel, g_cfg.hq_audio, g_cfg.crt, g_cfg.vibration, g_cfg.vibration_strength, g_cfg.smooth_scaling, g_cfg.fast_cd, g_cfg.keys.c_str(), g_cfg.pad.c_str());
     fclose(w);
 }

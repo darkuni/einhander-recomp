@@ -5,6 +5,7 @@
 #include "bios.h"
 #include "gte.h"
 #include "log.h"
+#include "rumble.h"
 #include <csignal>
 #include <cstdio>
 #include <cstdlib>
@@ -136,6 +137,7 @@ void platform_vblank() {
         if (FILE* f = fopen(fn, "wb")) { fwrite(g_ram, 1, 0x200000, f); fclose(f); }
     }
     scripted_input(vbl);
+    rumble_frame();
     watch_ram(vbl);
     static int dump_at = -1;
     static char dump_fn[256];

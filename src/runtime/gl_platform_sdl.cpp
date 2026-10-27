@@ -184,6 +184,17 @@ void platform_rumble(int small_on, int large) {
     else SDL_JoystickRumble(g_joy, lo, hi, 1000);
 }
 
+// Vibration made by the port (rumble.cpp): both motors, 0..1
+void platform_rumble_f(float low, float high) {
+    static Uint16 last_lo = 0xffff, last_hi = 0xffff;
+    if (!g_pad && !g_joy) return;
+    Uint16 lo = (Uint16)(low * 65535.0f), hi = (Uint16)(high * 65535.0f);
+    if (lo == last_lo && hi == last_hi) return;
+    last_lo = lo; last_hi = hi;
+    if (g_pad) SDL_GameControllerRumble(g_pad, lo, hi, 200);
+    else SDL_JoystickRumble(g_joy, lo, hi, 200);
+}
+
 void gl_platform_make_current() {
     if (t_current) return;
     SDL_GL_MakeCurrent(g_win, g_glc);
