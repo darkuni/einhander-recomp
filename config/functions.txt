@@ -1,0 +1,12 @@
+# Extra function entry points / names for the recompiler.
+#   func <image> <address> [name]
+#   notfunc <image> <address>
+#   interp <image> <address>
+#   table <image> <jr address> <table address> <count>
+
+# libetc startIntr: SetCustomExitFromException() longjmps to the instruction after setjmp()
+# (so the exception path enters this function in the middle).
+func SCUS_942.43 80015bf8 libetc_intr_entry
+func SYS.EXE 80013400 libetc_intr_entry
+# data after _patch_pad (looks like code to the gap sweep)
+notfunc SCUS_942.43 8001d804

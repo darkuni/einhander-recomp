@@ -1,0 +1,14 @@
+# Guest functions replaced by host code (image address host_function)
+# libapi/libcard patch the BIOS pad and memory card drivers in kernel RAM; the HLE BIOS has
+# nothing to patch, and EnablePAD/DisablePAD jump into that patched BIOS code.
+SCUS_942.43 8001d79c hle_nop    # _patch_pad
+SCUS_942.43 8001d774 hle_nop    # EnablePAD
+SCUS_942.43 8001d788 hle_nop    # DisablePAD
+SYS.EXE 8001e108 hle_nop        # _patch_pad
+SYS.EXE 8001e0e0 hle_nop        # EnablePAD
+SYS.EXE 8001e0f4 hle_nop        # DisablePAD
+SYS.EXE 8001c1b4 hle_nop        # _patch_card
+SYS.EXE 8001c26c hle_nop        # _patch_card2
+SYS.EXE 8001c2fc hle_nop        # _copy_memcard_patch (C0 table patch)
+SYS.EXE 8001e1f8 hle_nop        # _send_pad (patches the BIOS pad driver for actuator data)
+SYS.EXE 8001e1d0 hle_nop        # _SendPAD (calls into that patch)

@@ -1,0 +1,32 @@
+# Code images for the recompiler (see src/recomp.py).
+#   exe <file>
+#   ovl <file> <load address> <host exe> <archive> <offset> <size>
+# Overlays are entries of the BINPACKn.BIN archives (listed in BININDEX.BIN: per archive, one
+# 2 KB sector of (start sector, sector count) halfword pairs). Word 0 of each entry is its id.
+# The load addresses were found by matching every jal target in an entry against function
+# starts; the ones the game loads in the first stages were confirmed against RAM.
+exe SCUS_942.43
+exe SYS.EXE
+ovl overlays/P0_2b.bin 8008c800 SYS.EXE BINPACK0.BIN 0be000 021800   # front end (title, menus)
+ovl overlays/P0_9a.bin 80190000 SYS.EXE BINPACK0.BIN 043800 005000
+ovl overlays/P0_99.bin 80146000 SYS.EXE BINPACK0.BIN 11b000 002000   # movie player
+ovl overlays/P0_3a.bin 801cf000 SYS.EXE BINPACK0.BIN 11d000 02d000
+ovl overlays/P1_33.bin 8008c800 SYS.EXE BINPACK1.BIN 000000 0b7000   # game engine
+ovl overlays/P1_3c.bin 80146000 SYS.EXE BINPACK1.BIN 0ff800 04a000   # stage 1
+ovl overlays/P1_49.bin 801b2000 SYS.EXE BINPACK1.BIN 230800 03b800
+ovl overlays/P1_41.bin 80190000 SYS.EXE BINPACK1.BIN 2ee800 024800
+ovl overlays/P1_4b.bin 80146000 SYS.EXE BINPACK1.BIN 389800 068000
+ovl overlays/P1_50.bin 801ae000 SYS.EXE BINPACK1.BIN 4fb000 03a800
+ovl overlays/P2_57.bin 80146000 SYS.EXE BINPACK2.BIN 000000 036800
+ovl overlays/P2_5b.bin 8017c800 SYS.EXE BINPACK2.BIN 05f000 00a000
+ovl overlays/P2_5f.bin 80199800 SYS.EXE BINPACK2.BIN 14b800 028000
+ovl overlays/P2_62.bin 80146000 SYS.EXE BINPACK2.BIN 1b1000 017800
+ovl overlays/P2_65.bin 8015d800 SYS.EXE BINPACK2.BIN 20c800 025000
+ovl overlays/P2_67.bin 8015d800 SYS.EXE BINPACK2.BIN 3ba800 03e000
+ovl overlays/P3_72.bin 8016a000 SYS.EXE BINPACK3.BIN 05b000 046800
+ovl overlays/P3_73.bin 8016a000 SYS.EXE BINPACK3.BIN 1ea800 064800
+ovl overlays/P4_8d.bin 801f9800 SYS.EXE BINPACK4.BIN 01f800 002800
+ovl overlays/P4_82.bin 80148000 SYS.EXE BINPACK4.BIN 063000 00b800
+ovl overlays/P4_84.bin 80153800 SYS.EXE BINPACK4.BIN 097000 03f000
+ovl overlays/P4_8f.bin 80148000 SYS.EXE BINPACK4.BIN 213800 03b000
+ovl overlays/P4_93.bin 8008c800 SYS.EXE BINPACK4.BIN 24f000 094800   # ending
