@@ -698,7 +698,11 @@ static void run_chains(Cpu* c) {
 static void pad_vblank() {
     if (!g_pad_on) return;
     uint16_t b = sio_pad_buttons();
-    if (g_pad_buf[0]) { MEM_WB(g_pad_buf[0], 0); MEM_WB(g_pad_buf[0] + 1, 0x41); MEM_WB(g_pad_buf[0] + 2, b & 0xff); MEM_WB(g_pad_buf[0] + 3, b >> 8); }
+    static int id = getenv("PAD_ID") ? (int)strtol(getenv("PAD_ID"), nullptr, 16) : 0x41;
+    if (g_pad_buf[0]) {
+        MEM_WB(g_pad_buf[0], 0); MEM_WB(g_pad_buf[0] + 1, (uint8_t)id); MEM_WB(g_pad_buf[0] + 2, b & 0xff); MEM_WB(g_pad_buf[0] + 3, b >> 8);
+        if (id == 0x73) for (int i = 4; i < 8; i++) MEM_WB(g_pad_buf[0] + i, 0x80);
+    }
     if (g_pad_buf[1]) MEM_WB(g_pad_buf[1], 0xff);
     if (g_pad_word) MEM_WW(g_pad_word, (uint16_t)~b);
 }

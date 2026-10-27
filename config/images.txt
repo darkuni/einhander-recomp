@@ -4,7 +4,9 @@
 # Overlays are entries of the BINPACKn.BIN archives (listed in BININDEX.BIN: per archive, one
 # 2 KB sector of (start sector, sector count) halfword pairs). Word 0 of each entry is its id.
 # The load addresses were found by matching every jal target in an entry against function
-# starts; the ones the game loads in the first stages were confirmed against RAM.
+# starts. Every one of them is in SYS.EXE's table of load addresses at 0x80011590 (the loader's
+# requests point at its slots), and the ones loaded in the first stages were also confirmed
+# against RAM.
 exe SCUS_942.43
 exe SYS.EXE
 ovl overlays/P0_2b.bin 8008c800 SYS.EXE BINPACK0.BIN 0be000 021800   # front end (title, menus)

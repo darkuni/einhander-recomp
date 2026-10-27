@@ -40,7 +40,6 @@ static const std::vector<Item>& items() {
         {"Fullscreen", {"Off", "On"}, "Also F11 or Alt+Enter."},
         {"Scaling", {"Sharp", "Smooth"}, "How the picture is scaled to the window."},
         {"Swap A/B and X/Y", {"Off", "On"}, "Gamepad: use the face buttons by position (Nintendo style)."},
-        {"Vibration", {"Off", "On"}, nullptr},
         {"Fast CD loading", {"Off", "On"}, "Loads levels faster; music and movies stay real-time."},
         {"Game speed", {"Normal", "2x", "3x", "4x", "5x", "6x", "7x", "8x"}, "Fast-forward. Hold Tab for a burst."},
         {"Frame rate display", {"Off", "On"}, nullptr},
@@ -59,10 +58,9 @@ static int get_value(int i) {
         case 3: return g_cfg.fullscreen;
         case 4: return g_cfg.smooth_scaling;
         case 5: return g_cfg.swap_ab_xy;
-        case 6: return g_cfg.vibration;
-        case 7: return g_cfg.fast_cd;
-        case 8: return std::max(1, std::min(8, g_cfg.speed)) - 1;
-        case 9: return g_cfg.show_perf;
+        case 6: return g_cfg.fast_cd;
+        case 7: return std::max(1, std::min(8, g_cfg.speed)) - 1;
+        case 8: return g_cfg.show_perf;
     }
     return 0;
 }
@@ -74,10 +72,9 @@ static void set_value(int i, int v) {
         case 3: g_cfg.fullscreen = v; break;
         case 4: g_cfg.smooth_scaling = v; break;
         case 5: g_cfg.swap_ab_xy = v; break;
-        case 6: g_cfg.vibration = v; break;
-        case 7: g_cfg.fast_cd = v; break;
-        case 8: g_cfg.speed = v + 1; break;
-        case 9: g_cfg.show_perf = v; break;
+        case 6: g_cfg.fast_cd = v; break;
+        case 7: g_cfg.speed = v + 1; break;
+        case 8: g_cfg.show_perf = v; break;
     }
     config_save();
 }

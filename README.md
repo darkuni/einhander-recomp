@@ -46,7 +46,6 @@ saves can be copied to and from emulators. Settings are in `einhander.ini`.
 | VSync, Fullscreen (F11 / Alt+Enter) | |
 | Scaling | sharp or smooth |
 | Swap A/B and X/Y | face buttons by position |
-| Vibration | DualShock rumble on your controller |
 | Fast CD loading | levels load faster; music and movies stay real-time |
 | Game speed | 1x-8x fast-forward (hold Tab for a burst) |
 | Frame rate display | game frames per second and emulation speed (100% = a real console) |
@@ -55,7 +54,9 @@ saves can be copied to and from emulators. Settings are in `einhander.ini`.
 
 ### Controls
 
-Any XInput/SDL gamepad works as a DualShock (analog sticks and rumble when the game enables them).
+Any XInput/SDL gamepad works. Einhander reads only the d-pad and buttons, so the left stick also
+drives the d-pad. The game has no vibration support (it never sends motor data, and a reference
+emulator with a DualShock attached never rumbles either), so there is no vibration setting.
 Controllers SDL has no mapping for are used as generic joysticks (buttons, hats, axes), and a
 `gamecontrollerdb.txt` next to the exe adds more mappings. Start+Select opens the settings menu.
 Keyboard defaults: arrows = d-pad, X = Cross, Z = Circle, A = Square, S = Triangle, Q/W = L1/R1,

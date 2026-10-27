@@ -57,7 +57,9 @@ unknown overlays were located (`LOG=cdmap` logs which disc sector went to which 
   is provided there. `LoadExec` (A0:51) loads the next executable from the disc and restarts
   through a C++ exception that unwinds to the top level. The BIOS pad driver (`InitPAD`,
   `StartPAD`, `PAD_init`) fills the game's buffers every vblank; libapi's BIOS patches
-  (`_patch_pad`, `_send_pad`, `EnablePAD`/`DisablePAD`) are no-ops.
+  (`_patch_pad`, `_send_pad`, `EnablePAD`/`DisablePAD`) are no-ops. The game accepts pad ids
+  0x41/0x53/0x73 but reads only the button bytes, and its `SendPAD` actuator buffers are
+  initialised once and never written, so the port reports a digital pad (`PAD_ID=73` overrides).
 - **Threads**: each guest thread runs
   on its own host thread; only one runs at a time (baton handoff), and the GL context follows.
   The game switches threads from its VSync interrupt by writing the PCB pointer directly, so the
