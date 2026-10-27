@@ -1379,7 +1379,7 @@ static const FuncEntry img1_funcs[] = {
     {0x8004ede4u, e1_8004ede4},
     {0x8004f074u, e1_8004f074},
 };
-static const uint32_t img1_sig[] = {0x800116d4u, 0x27bdffe8u, 0x80018f48u, 0x27bdffd8u, 0x80020d78u, 0x8fbf0038u, 0x80028e48u, 0x00821021u, 0x80030764u, 0x0800c25cu, 0x80037e40u, 0x14400002u, 0x8003f70cu, 0x02c03021u, 0x8004729cu, 0xa422125au};
+static const uint32_t img1_sig[] = {0x800116d4u, 0x27bdffe8u, 0x800194f0u, 0x240400c0u, 0x80021504u, 0x90420000u, 0x80028dd8u, 0x00821021u, 0x8002fcd8u, 0x00058c00u, 0x80037e0cu, 0xa6020008u, 0x8003f0c4u, 0x00431025u, 0x800460e0u, 0x00001021u, 0x8004f1d4u, 0xace20000u};
 static const FuncEntry img2_funcs[] = {
     {0x8008d058u, o00_8008d058},
     {0x8008d09cu, o00_8008d09c},
@@ -1673,7 +1673,7 @@ static const FuncEntry img2_funcs[] = {
     {0x800a6768u, o00_800a6768},
     {0x800a6d34u, o00_800a6d34},
 };
-static const uint32_t img2_sig[] = {0x8008d09cu, 0x27bdffe8u, 0x80090420u, 0x24062000u, 0x80093b44u, 0x3c01800bu, 0x80096e40u, 0x8463d9d8u, 0x80099f94u, 0xa46b0008u, 0x8009d4b8u, 0x8fbf0014u, 0x800a0904u, 0x24020082u, 0x800a3bf4u, 0x8c23ce20u, 0x800a6e0cu, 0x8fb00028u};
+static const uint32_t img2_sig[] = {0x8008dde8u, 0x27bdffe0u, 0x8008fd98u, 0x000538c0u, 0x80092cdcu, 0x24620018u, 0x80094f64u, 0x8ce20008u, 0x80096ef4u, 0x24c6000cu, 0x80098da8u, 0xafbf0028u, 0x8009b7a0u, 0x00671824u, 0x8009eb70u, 0x24040405u, 0x800a65fcu, 0x8fb40058u};
 static const FuncEntry img3_funcs[] = {
     {0x80190044u, o01_80190044},
     {0x801903c4u, o01_801903c4},
@@ -1702,7 +1702,7 @@ static const FuncEntry img3_funcs[] = {
     {0x801916b8u, o01_801916b8},
     {0x80191840u, o01_80191840},
 };
-static const uint32_t img3_sig[] = {0x80190044u, 0x24a8ff6cu, 0x80190334u, 0xa4620012u, 0x80190618u, 0xac830000u, 0x80190918u, 0x00021403u, 0x80190c0cu, 0x3c018019u, 0x80190f2cu, 0x00431021u, 0x80191240u, 0xac227ce4u, 0x80191588u, 0x0c038b32u};
+static const uint32_t img3_sig[] = {0x80190044u, 0x24a8ff6cu, 0x801901f8u, 0x01221021u, 0x80190384u, 0x8ca30000u, 0x8019051cu, 0x2482fffeu, 0x801906c0u, 0x24030001u, 0x80190dfcu, 0xa1220003u, 0x80190fbcu, 0xa1220007u, 0x8019115cu, 0x3c048019u, 0x80191318u, 0xac820004u};
 static const FuncEntry img4_funcs[] = {
     {0x801460b0u, o02_801460b0},
     {0x801460e8u, o02_801460e8},
@@ -1759,7 +1759,7 @@ static const FuncEntry img5_funcs[] = {
     {0x801d3380u, o03_801d3380},
     {0x801d35fcu, o03_801d35fc},
 };
-static const uint32_t img5_sig[] = {0x801cf040u, 0x27bdff78u, 0x801cf044u, 0xafbe0080u, 0x801cf938u, 0x24c6be8cu, 0x801d020cu, 0xae020004u, 0x801d0ac0u, 0xafa0003cu, 0x801d1388u, 0xafb20060u, 0x801d1390u, 0xafb00058u, 0x801d1c18u, 0x8e2c0008u, 0x801d24f4u, 0x00671824u, 0x801d2d94u, 0xac82000cu, 0x801d362cu, 0x24070080u};
+static const uint32_t img5_sig[] = {0x801cf040u, 0x27bdff78u, 0x801cf044u, 0xafbe0080u, 0x801cf538u, 0x3c01801fu, 0x801d19c0u, 0x00021403u, 0x801d1ea4u, 0x00551021u, 0x801d236cu, 0x00407021u, 0x801d2370u, 0x00021400u, 0x801d2808u, 0x00809021u, 0x801d2cd0u, 0x01421021u, 0x801d316cu, 0x96030006u};
 static const FuncEntry img6_funcs[] = {
     {0x8008d3e0u, o04_8008d3e0},
     {0x8008d700u, o04_8008d700},
@@ -2024,6 +2024,7 @@ static const FuncEntry img6_funcs[] = {
     {0x800a9580u, o04_800a9580},
     {0x800a981cu, o04_800a981c},
     {0x800a9a0cu, o04_800a9a0c},
+    {0x800a9a14u, o04_800a9a14},
     {0x800a9d34u, o04_800a9d34},
     {0x800aa044u, o04_800aa044},
     {0x800aa200u, o04_800aa200},
@@ -2051,6 +2052,7 @@ static const FuncEntry img6_funcs[] = {
     {0x800ad924u, o04_800ad924},
     {0x800add44u, o04_800add44},
     {0x800adff8u, o04_800adff8},
+    {0x800ae000u, o04_800ae000},
     {0x800ae278u, o04_800ae278},
     {0x800ae4b0u, o04_800ae4b0},
     {0x800ae708u, o04_800ae708},
@@ -2073,6 +2075,7 @@ static const FuncEntry img6_funcs[] = {
     {0x800b1e78u, o04_800b1e78},
     {0x800b2154u, o04_800b2154},
     {0x800b262cu, o04_800b262c},
+    {0x800b2634u, o04_800b2634},
     {0x800b27a0u, o04_800b27a0},
     {0x800b2abcu, o04_800b2abc},
     {0x800b2cc8u, o04_800b2cc8},
@@ -2759,7 +2762,7 @@ static const FuncEntry img6_funcs[] = {
     {0x800fb92cu, o04_800fb92c},
     {0x800fb9a0u, o04_800fb9a0},
 };
-static const uint32_t img6_sig[] = {0x8008d3e0u, 0x3c028004u, 0x800985bcu, 0x1440fff7u, 0x800ad90cu, 0x8fb20018u, 0x800b86fcu, 0xa6440002u, 0x800c3728u, 0xa2220005u, 0x800ce110u, 0x08033849u, 0x800e0628u, 0x9423bee4u, 0x800efcfcu, 0x27bd0048u, 0x800fb834u, 0x02002021u};
+static const uint32_t img6_sig[] = {0x8008d3e0u, 0x3c028004u, 0x8009582cu, 0x8e2509a0u, 0x800a5ee4u, 0x24e50018u, 0x800afed0u, 0x9422838eu, 0x800baee4u, 0x34420080u, 0x800c71d0u, 0x004b1021u, 0x800d2404u, 0x00621825u, 0x800e91dcu, 0x0007000du, 0x800fb83cu, 0x02002021u};
 static const FuncEntry img7_funcs[] = {
     {0x801464f8u, o05_801464f8},
     {0x801466b4u, o05_801466b4},
@@ -2790,6 +2793,7 @@ static const FuncEntry img7_funcs[] = {
     {0x80147bdcu, o05_80147bdc},
     {0x80147bfcu, o05_80147bfc},
     {0x80147cb0u, o05_80147cb0},
+    {0x80147cb8u, o05_80147cb8},
     {0x80147d6cu, o05_80147d6c},
     {0x80147dd8u, o05_80147dd8},
     {0x80147ebcu, o05_80147ebc},
@@ -2800,6 +2804,7 @@ static const FuncEntry img7_funcs[] = {
     {0x8014825cu, o05_8014825c},
     {0x80148264u, o05_80148264},
     {0x801482acu, o05_801482ac},
+    {0x801482b4u, o05_801482b4},
     {0x801482e4u, o05_801482e4},
     {0x80148310u, o05_80148310},
     {0x8014833cu, o05_8014833c},
@@ -3015,9 +3020,9 @@ static const FuncEntry img7_funcs[] = {
     {0x8016568cu, o05_8016568c},
     {0x80165ba8u, o05_80165ba8},
 };
-static const uint32_t img7_sig[] = {0x801464f8u, 0x27bdffd0u, 0x801464fcu, 0xafb50024u, 0x80146500u, 0x0080a821u, 0x80146504u, 0xafb3001cu, 0x80146508u, 0x3c138008u, 0x8014cf60u, 0xa623008au, 0x801509dcu, 0x0c0109e6u, 0x8015428cu, 0x8e02002cu, 0x80157cc4u, 0x10600008u, 0x80157cccu, 0x08055fb4u, 0x80157cd0u, 0x02402021u, 0x80157cd4u, 0x24020002u, 0x8015b51cu, 0x48cc0000u, 0x8015edd4u, 0x14430005u, 0x801626d8u, 0x24630003u};
+static const uint32_t img7_sig[] = {0x801464f8u, 0x27bdffd0u, 0x801464fcu, 0xafb50024u, 0x80146500u, 0x0080a821u, 0x80146504u, 0xafb3001cu, 0x80146508u, 0x3c138008u, 0x8014bdc0u, 0x27bdffe8u, 0x80150530u, 0x3c018019u, 0x801548dcu, 0x00041840u, 0x8015aeccu, 0x3c028008u, 0x8015c3f0u, 0x26310555u, 0x8015c3fcu, 0x8fa20018u, 0x8015c400u, 0x8e630030u, 0x8015c404u, 0x3c0b8008u, 0x8015fb2cu, 0x96230238u, 0x801610a4u, 0x8d2e0010u, 0x80164aa4u, 0x27a60010u, 0x80166088u, 0x8fb20068u};
 static const FuncEntry img8_funcs[] = {
-    {0x801b202cu, o06_801b202c},
+    {0x801b21bcu, o06_801b21bc},
     {0x801b2328u, o06_801b2328},
     {0x801b23ecu, o06_801b23ec},
     {0x801b24fcu, o06_801b24fc},
@@ -3275,6 +3280,7 @@ static const FuncEntry img8_funcs[] = {
     {0x801c0744u, o06_801c0744},
     {0x801c07e8u, o06_801c07e8},
     {0x801c0824u, o06_801c0824},
+    {0x801c082cu, o06_801c082c},
     {0x801c08f0u, o06_801c08f0},
     {0x801c092cu, o06_801c092c},
     {0x801c096cu, o06_801c096c},
@@ -3449,7 +3455,7 @@ static const FuncEntry img8_funcs[] = {
     {0x801c75bcu, o06_801c75bc},
     {0x801c7630u, o06_801c7630},
 };
-static const uint32_t img8_sig[] = {0x801b2328u, 0x27bdffe0u, 0x801b232cu, 0xafb00010u, 0x801b48b4u, 0xace30030u, 0x801b6df0u, 0xafb20028u, 0x801b9188u, 0xae620044u, 0x801bb6d4u, 0xae230048u, 0x801bb6d8u, 0x8fa20010u, 0x801bdf28u, 0xe8590000u, 0x801c064cu, 0x0040f809u, 0x801c51ecu, 0xae030004u};
+static const uint32_t img8_sig[] = {0x801b23ecu, 0x27bdffd8u, 0x801b23f0u, 0xafb1001cu, 0x801b3680u, 0x9625009au, 0x801b48e0u, 0xa4e00036u, 0x801b74ccu, 0x480d5000u, 0x801bae88u, 0x8e02000cu, 0x801bae98u, 0x02002821u, 0x801bd128u, 0x8e23002cu, 0x801be7e8u, 0x00021603u, 0x801c4b38u, 0x24020002u, 0x801c7698u, 0x00441025u};
 static const FuncEntry img9_funcs[] = {
     {0x80190228u, o07_80190228},
     {0x80190488u, o07_80190488},
@@ -3587,7 +3593,7 @@ static const FuncEntry img9_funcs[] = {
     {0x801a2bb8u, o07_801a2bb8},
     {0x801a2d2cu, o07_801a2d2c},
 };
-static const uint32_t img9_sig[] = {0x80190228u, 0x27bdffe8u, 0x8019022cu, 0x00806021u, 0x80190230u, 0xafbf0010u, 0x80192878u, 0x24030005u, 0x80194d30u, 0x14620046u, 0x80197058u, 0x02802821u, 0x80199334u, 0xac227ce4u, 0x80199340u, 0xa6220000u, 0x80199344u, 0x8d020004u, 0x8019b980u, 0x2484396cu, 0x8019df40u, 0x8ea40008u, 0x801a0668u, 0x0c03cb46u, 0x801a2d1cu, 0x8fb00020u};
+static const uint32_t img9_sig[] = {0x80190228u, 0x27bdffe8u, 0x8019022cu, 0x00806021u, 0x80190230u, 0xafbf0010u, 0x801947fcu, 0x0806520au, 0x80196214u, 0x00e0b821u, 0x80197bd4u, 0xae430024u, 0x80199588u, 0x9622001cu, 0x80199594u, 0x00431021u, 0x80199598u, 0xa4820018u, 0x8019b27cu, 0xa2020000u, 0x8019d0e0u, 0x08067651u, 0x8019f378u, 0x2402002du, 0x801a29c4u, 0x8fb00018u};
 static const FuncEntry img10_funcs[] = {
     {0x80146928u, o08_80146928},
     {0x80146a9cu, o08_80146a9c},
@@ -4053,9 +4059,9 @@ static const FuncEntry img10_funcs[] = {
     {0x8016a9d0u, o08_8016a9d0},
     {0x8016ab20u, o08_8016ab20},
 };
-static const uint32_t img10_sig[] = {0x80146928u, 0x27bdffe0u, 0x8014692cu, 0xafb10014u, 0x80146930u, 0x00808821u, 0x80146934u, 0xafb00010u, 0x80146938u, 0x3c106666u, 0x8014ca58u, 0xafb10010u, 0x801512e0u, 0x27bd0030u, 0x80155aa0u, 0x944c0000u, 0x8015a6f8u, 0xafa20030u, 0x8015a704u, 0xafa20034u, 0x8015a708u, 0x8668008cu, 0x8015a70cu, 0x87a20040u, 0x8015a710u, 0x27a60010u, 0x8015e8f4u, 0xafb60038u, 0x80162b2cu, 0x8fbf0040u, 0x80166df4u, 0x0c006ebfu, 0x8016a000u, 0x28620800u, 0x8016afd0u, 0x8ce30000u};
+static const uint32_t img10_sig[] = {0x80146928u, 0x27bdffe0u, 0x8014692cu, 0xafb10014u, 0x80146930u, 0x00808821u, 0x80146934u, 0xafb00010u, 0x80146938u, 0x3c106666u, 0x8014b6a4u, 0x27bdffe8u, 0x80152c54u, 0x00808821u, 0x80156134u, 0x02402821u, 0x80158bccu, 0xa42300e4u, 0x80158bd4u, 0x2c420018u, 0x80158bd8u, 0x3c018014u, 0x80158bdcu, 0x00250821u, 0x80158be0u, 0xa42300e6u, 0x8015e924u, 0x00431021u, 0x80162908u, 0x8ea30014u, 0x801691c4u, 0x8c43002cu, 0x8016a000u, 0x28620800u, 0x8016afdcu, 0xace30000u};
 static const FuncEntry img11_funcs[] = {
-    {0x801ae3dcu, o09_801ae3dc},
+    {0x801ae3e4u, o09_801ae3e4},
     {0x801ae43cu, o09_801ae43c},
     {0x801ae598u, o09_801ae598},
     {0x801ae618u, o09_801ae618},
@@ -4592,7 +4598,7 @@ static const FuncEntry img11_funcs[] = {
     {0x801ca828u, o09_801ca828},
     {0x801cad08u, o09_801cad08},
 };
-static const uint32_t img11_sig[] = {0x801ae43cu, 0x27bdffe8u, 0x801ae440u, 0xafb00010u, 0x801b25a0u, 0x3c07801bu, 0x801b5b44u, 0xaca20160u, 0x801b9538u, 0x00431021u, 0x801bcc10u, 0x24420001u, 0x801bcc14u, 0xa6c20000u, 0x801c0314u, 0x27bd0070u, 0x801c3b8cu, 0x24020005u, 0x801c73c8u, 0xc8800000u};
+static const uint32_t img11_sig[] = {0x801ae618u, 0x27bdffe0u, 0x801ae61cu, 0xafb10014u, 0x801af998u, 0x03e00008u, 0x801b1abcu, 0x00021042u, 0x801b5e94u, 0x26520002u, 0x801b88ecu, 0x12000026u, 0x801b88f4u, 0x8e220038u, 0x801c02c8u, 0xa7a30018u, 0x801c3ee0u, 0x00240821u, 0x801c687cu, 0x8d4c0000u, 0x801c9b2cu, 0x8fb00060u};
 static const FuncEntry img12_funcs[] = {
     {0x80146470u, o10_80146470},
     {0x80146748u, o10_80146748},
@@ -4619,6 +4625,7 @@ static const FuncEntry img12_funcs[] = {
     {0x80147e48u, o10_80147e48},
     {0x80147e78u, o10_80147e78},
     {0x80147f20u, o10_80147f20},
+    {0x80147f28u, o10_80147f28},
     {0x80147fa4u, o10_80147fa4},
     {0x80147fd4u, o10_80147fd4},
     {0x8014807cu, o10_8014807c},
@@ -4799,9 +4806,9 @@ static const FuncEntry img12_funcs[] = {
     {0x8015acb4u, o10_8015acb4},
     {0x8015ace4u, o10_8015ace4},
 };
-static const uint32_t img12_sig[] = {0x80146470u, 0x3c028008u, 0x80146474u, 0x8442138cu, 0x80146478u, 0x27bdffd0u, 0x8014647cu, 0xafbf0028u, 0x80146480u, 0xafb10024u, 0x80146484u, 0x10400012u, 0x8014969cu, 0x8c640020u, 0x8014bdccu, 0xa6e30092u, 0x8014e37cu, 0x8203059eu, 0x80150a08u, 0x0000a021u, 0x80150a10u, 0x27b60010u, 0x80150a14u, 0x241100a0u, 0x80150a18u, 0x264f0008u, 0x80150a1cu, 0xafaf0078u, 0x80153768u, 0x0c02d81au, 0x80155d98u, 0x0c034812u, 0x801583c8u, 0x00002821u, 0x8015acd8u, 0x27bd0018u};
+static const uint32_t img12_sig[] = {0x80146470u, 0x3c028008u, 0x80146474u, 0x8442138cu, 0x80146478u, 0x27bdffd0u, 0x8014647cu, 0xafbf0028u, 0x80146480u, 0xafb10024u, 0x80146484u, 0x10400012u, 0x80149e5cu, 0x8c420010u, 0x8014d9ccu, 0x00441023u, 0x8014ebf4u, 0x00021400u, 0x8014fd9cu, 0x00430018u, 0x8014fda4u, 0x00003810u, 0x8014fda8u, 0x00e42023u, 0x8014fdacu, 0x00041840u, 0x8014fdb0u, 0x00641821u, 0x80150f14u, 0x0c0095f2u, 0x80155a08u, 0x87a60018u, 0x80158270u, 0xae25000cu, 0x8015abc8u, 0x27bd0058u};
 static const FuncEntry img13_funcs[] = {
-    {0x8017c854u, o11_8017c854},
+    {0x8017c8b4u, o11_8017c8b4},
     {0x8017c91cu, o11_8017c91c},
     {0x8017cd10u, o11_8017cd10},
     {0x8017cfb8u, o11_8017cfb8},
@@ -4823,7 +4830,7 @@ static const FuncEntry img13_funcs[] = {
     {0x8017f9c0u, o11_8017f9c0},
     {0x8017fc0cu, o11_8017fc0c},
 };
-static const uint32_t img13_sig[] = {0x8017cfb8u, 0x27bdffe0u, 0x8017d4f8u, 0x00021043u, 0x8017dbd4u, 0x960201f0u, 0x8017e130u, 0x000210c0u, 0x8017e67cu, 0xae430048u, 0x8017eba0u, 0x0805faebu, 0x8017f0d0u, 0x0c0109e6u, 0x8017f6fcu, 0xafb3002cu, 0x8017fc64u, 0xa48201ecu};
+static const uint32_t img13_sig[] = {0x8017cfb8u, 0x27bdffe0u, 0x8017d1c0u, 0x04410002u, 0x8017d3a4u, 0x02003021u, 0x8017d590u, 0x00021040u, 0x8017d780u, 0x87a70044u, 0x8017f684u, 0x2842ffd8u, 0x8017f88cu, 0x34420080u, 0x8017fa80u, 0x27a60010u, 0x8017fc78u, 0x03e00008u};
 static const FuncEntry img14_funcs[] = {
     {0x80199ac8u, o12_80199ac8},
     {0x80199b1cu, o12_80199b1c},
@@ -4977,7 +4984,7 @@ static const FuncEntry img14_funcs[] = {
     {0x801af344u, o12_801af344},
     {0x801af3acu, o12_801af3ac},
 };
-static const uint32_t img14_sig[] = {0x80199ac8u, 0x27bdffe8u, 0x80199accu, 0xafb00010u, 0x8019c474u, 0x02802821u, 0x8019edacu, 0x08067bb9u, 0x801a1710u, 0x480c9800u, 0x801a4184u, 0xa4620000u, 0x801a4188u, 0x9262081du, 0x801a6df0u, 0x1462001au, 0x801a9954u, 0xae430050u, 0x801ac784u, 0xa3a00028u, 0x801ae000u, 0x27a50018u, 0x801ae9d8u, 0x00401821u};
+static const uint32_t img14_sig[] = {0x80199ac8u, 0x27bdffe8u, 0x80199accu, 0xafb00010u, 0x8019dbf4u, 0xaca2007cu, 0x8019f9b0u, 0x24100001u, 0x801a0c70u, 0xafaf0018u, 0x801a1f14u, 0xa4a20000u, 0x801a1f20u, 0x944209a2u, 0x801a31c8u, 0x00008021u, 0x801aaae0u, 0xa2000006u, 0x801ad458u, 0x00451021u, 0x801ae328u, 0x27bdffd0u, 0x801af394u, 0x8fb20018u};
 static const FuncEntry img15_funcs[] = {
     {0x80146070u, o13_80146070},
     {0x80146078u, o13_80146078},
@@ -5103,7 +5110,7 @@ static const FuncEntry img15_funcs[] = {
     {0x801510a8u, o13_801510a8},
     {0x80151264u, o13_80151264},
 };
-static const uint32_t img15_sig[] = {0x8014609cu, 0x27bdffe8u, 0x801460a0u, 0xafbf0010u, 0x801471f0u, 0x03e00008u, 0x8014a9e8u, 0x1220002eu, 0x8014bab0u, 0x8e840004u, 0x8014ca94u, 0x27b00020u, 0x8014ca9cu, 0x86420088u, 0x8014daf0u, 0x00003010u, 0x8014eb68u, 0x24060001u, 0x8014fb94u, 0x8f0d000cu, 0x80150bacu, 0x8fb1004cu};
+static const uint32_t img15_sig[] = {0x801461a4u, 0x3c038008u, 0x801461a8u, 0x90631366u, 0x801461acu, 0x27bdffd0u, 0x8014980cu, 0x27bdffd0u, 0x8014a088u, 0x24840080u, 0x8014e0f8u, 0x24020002u, 0x8014e9acu, 0xa622000eu, 0x8014e9c4u, 0x04410008u, 0x8014f244u, 0xae220000u, 0x8014fab0u, 0x01003821u, 0x8015033cu, 0xace30000u, 0x80150ba0u, 0x8fb40058u};
 static const FuncEntry img16_funcs[] = {
     {0x8015de64u, o14_8015de64},
     {0x8015dfa8u, o14_8015dfa8},
@@ -5240,7 +5247,7 @@ static const FuncEntry img16_funcs[] = {
     {0x801707fcu, o14_801707fc},
     {0x8017085cu, o14_8017085c},
 };
-static const uint32_t img16_sig[] = {0x8015dfa8u, 0x3c028014u, 0x8015dfacu, 0x9042afa8u, 0x80160e78u, 0xafbf0034u, 0x80164058u, 0x00641821u, 0x801661a0u, 0x00004810u, 0x8016825cu, 0xa642009au, 0x80168264u, 0x04610002u, 0x8016a2ecu, 0xa2420837u, 0x8016c3d0u, 0x94820002u, 0x8016ed20u, 0x88a30007u, 0x80170de0u, 0x8fb10064u};
+static const uint32_t img16_sig[] = {0x8015dfa8u, 0x3c028014u, 0x8015dfacu, 0x9042afa8u, 0x80161b90u, 0xa4820012u, 0x8016574cu, 0x00441021u, 0x80168394u, 0xa6400098u, 0x8016a52cu, 0x0805a96au, 0x8016a538u, 0x00111080u, 0x8016b58cu, 0x8fbe0030u, 0x8016c574u, 0x00031c03u, 0x8016fd78u, 0x00002821u, 0x80170ddcu, 0x8fb20068u};
 static const FuncEntry img17_funcs[] = {
     {0x8015d800u, o15_8015d800},
     {0x8015dfc8u, o15_8015dfc8},
@@ -5467,7 +5474,7 @@ static const FuncEntry img17_funcs[] = {
     {0x80177a90u, o15_80177a90},
     {0x80177bf0u, o15_80177bf0},
 };
-static const uint32_t img17_sig[] = {0x8015efc8u, 0x27bdffa8u, 0x8015efccu, 0xafb60050u, 0x8015efd0u, 0x00a0b021u, 0x8015efd4u, 0x2408ffe0u, 0x8015efd8u, 0x00052c00u, 0x8016c558u, 0x8d040b1cu, 0x8016d56cu, 0xa6800034u, 0x8016e740u, 0xaea2002cu, 0x8016f880u, 0x8ca30020u, 0x8016f890u, 0x8e82007cu, 0x8016f898u, 0xaea20024u, 0x8016f89cu, 0x8ec20030u, 0x8016f8a0u, 0x8ca30028u, 0x80170f10u, 0x2c42013fu, 0x80173718u, 0x8e30001cu, 0x80177378u, 0x3042007fu, 0x80178734u, 0x8fb30034u};
+static const uint32_t img17_sig[] = {0x8015e018u, 0x27bdff88u, 0x8015e01cu, 0xafb3005cu, 0x8015e020u, 0x00809821u, 0x8015e024u, 0xafbf0074u, 0x8015e028u, 0xafbe0070u, 0x8015fd14u, 0x08057f4cu, 0x801623b4u, 0x8c6d000cu, 0x80164170u, 0xae42002cu, 0x8016c9c8u, 0xaec20030u, 0x8016c9ccu, 0x82e208d2u, 0x8016c9d4u, 0x10400090u, 0x8016c9d8u, 0x02a02021u, 0x8016c9dcu, 0x02802821u, 0x8016e7d8u, 0x0805b9fcu, 0x80170b58u, 0x48cc1000u, 0x80175888u, 0x2462ff88u, 0x80178744u, 0x27bd0050u};
 static const FuncEntry img18_funcs[] = {
     {0x8016a2b8u, o16_8016a2b8},
     {0x8016a358u, o16_8016a358},
@@ -5699,9 +5706,9 @@ static const FuncEntry img18_funcs[] = {
     {0x8018da6cu, o16_8018da6c},
     {0x8018da8cu, o16_8018da8c},
 };
-static const uint32_t img18_sig[] = {0x8016a358u, 0x3c028014u, 0x8016a35cu, 0x9042afa8u, 0x8016a360u, 0x2403000fu, 0x8016a364u, 0x00021100u, 0x8016a368u, 0x3c018014u, 0x8016ef7cu, 0x26f70001u, 0x80172bd8u, 0x0805cb0au, 0x8017b498u, 0x3c03ffffu, 0x8017eff4u, 0x30630003u, 0x8017effcu, 0x18600023u, 0x8017f000u, 0x0040a821u, 0x8017f004u, 0x0c0109e6u, 0x8017f008u, 0x26730001u, 0x80182c80u, 0x0c0135b5u, 0x801867c8u, 0x00021080u, 0x8018a2b0u, 0x27bd0018u, 0x8018de1cu, 0x8fb00028u};
+static const uint32_t img18_sig[] = {0x8016a358u, 0x3c028014u, 0x8016a35cu, 0x9042afa8u, 0x8016a360u, 0x2403000fu, 0x8016a364u, 0x00021100u, 0x8016a368u, 0x3c018014u, 0x80172ac8u, 0x2405500au, 0x801757b0u, 0x00001012u, 0x80177cb4u, 0x00621825u, 0x8017c404u, 0x3463347bu, 0x8017c410u, 0x8e240020u, 0x8017c414u, 0x00004010u, 0x8017c418u, 0x00081a83u, 0x8017c41cu, 0x0c03e9a1u, 0x801807f0u, 0x0c035cbbu, 0x80186138u, 0x15400002u, 0x8018a968u, 0x10400004u, 0x8018de14u, 0x8fb20030u};
 static const FuncEntry img19_funcs[] = {
-    {0x8016a1f8u, o17_8016a1f8},
+    {0x8016a250u, o17_8016a250},
     {0x8016a2a0u, o17_8016a2a0},
     {0x8016a8d8u, o17_8016a8d8},
     {0x8016ac94u, o17_8016ac94},
@@ -5761,6 +5768,7 @@ static const FuncEntry img19_funcs[] = {
     {0x8016ecb4u, o17_8016ecb4},
     {0x8016edb8u, o17_8016edb8},
     {0x8016eeb8u, o17_8016eeb8},
+    {0x8016eec0u, o17_8016eec0},
     {0x8016ef88u, o17_8016ef88},
     {0x8016f038u, o17_8016f038},
     {0x8016f0acu, o17_8016f0ac},
@@ -6522,7 +6530,7 @@ static const FuncEntry img19_funcs[] = {
     {0x801955acu, o17_801955ac},
     {0x801955dcu, o17_801955dc},
 };
-static const uint32_t img19_sig[] = {0x8016ac94u, 0x27bdffe8u, 0x8016ac98u, 0xafb00010u, 0x8016ac9cu, 0x00808021u, 0x8016aca0u, 0xafbf0014u, 0x801712c4u, 0x24064000u, 0x80176288u, 0x27a40020u, 0x8017b884u, 0xa0820014u, 0x801810e0u, 0x3c040021u, 0x801810e4u, 0x3484ffffu, 0x801810e8u, 0x8e4201c0u, 0x801810ecu, 0x24038000u, 0x801863d0u, 0x00021303u, 0x8018b330u, 0x0c05b6f8u, 0x80190000u, 0x03e00008u, 0x8019051cu, 0x00021403u};
+static const uint32_t img19_sig[] = {0x8016a2a0u, 0x27bdffa0u, 0x8016a2a4u, 0xafb30044u, 0x8016a2a8u, 0x00809821u, 0x8016a2acu, 0xafbf005cu, 0x8016d514u, 0x8c62000cu, 0x801754a0u, 0x8ca30000u, 0x80178ba0u, 0xa4820000u, 0x8017dc24u, 0x26730001u, 0x8017dc28u, 0xae02fffcu, 0x8017dc2cu, 0x8e220008u, 0x8017dc30u, 0x2631000cu, 0x80182c24u, 0x8fb600d0u, 0x80188facu, 0xafb3002cu, 0x80190000u, 0x03e00008u, 0x801911f4u, 0x0c00547du, 0x80195630u, 0x8fbf0010u};
 static const FuncEntry img20_funcs[] = {
     {0x801f9840u, o18_801f9840},
     {0x801f99f4u, o18_801f99f4},
@@ -6545,7 +6553,7 @@ static const FuncEntry img20_funcs[] = {
     {0x801fbac4u, o18_801fbac4},
     {0x801fbbc4u, o18_801fbbc4},
 };
-static const uint32_t img20_sig[] = {0x801f9840u, 0x27bdffa0u, 0x801f9bb0u, 0xafa60028u, 0x801f9f3cu, 0x00002821u, 0x801fa29cu, 0x8fb00058u, 0x801fa5f8u, 0x00021183u, 0x801fa954u, 0x24020009u, 0x801face8u, 0x00701821u, 0x801fb044u, 0x02e02021u, 0x801fb3c4u, 0x03e00008u};
+static const uint32_t img20_sig[] = {0x801f9840u, 0x27bdffa0u, 0x801f99c8u, 0x24420001u, 0x801faa80u, 0x95030011u, 0x801fac18u, 0xae020310u, 0x801fad98u, 0x2842000fu, 0x801faf18u, 0x8ca5590cu, 0x801fb090u, 0x96020016u, 0x801fb23cu, 0xa0b60006u, 0x801fb3b4u, 0x00481024u};
 static const FuncEntry img21_funcs[] = {
     {0x801480a4u, o19_801480a4},
     {0x80148198u, o19_80148198},
@@ -6615,12 +6623,12 @@ static const FuncEntry img21_funcs[] = {
     {0x8014e88cu, o19_8014e88c},
     {0x8014e918u, o19_8014e918},
     {0x8014e9a8u, o19_8014e9a8},
-    {0x8014edf4u, o19_8014edf4},
+    {0x8014edfcu, o19_8014edfc},
     {0x8014f408u, o19_8014f408},
     {0x8014f4c0u, o19_8014f4c0},
     {0x8014f558u, o19_8014f558},
 };
-static const uint32_t img21_sig[] = {0x801480a4u, 0x27bdffd8u, 0x8014916cu, 0x3c018015u, 0x8014988cu, 0x000217c2u, 0x80149f98u, 0x00051103u, 0x8014a6b4u, 0x35087911u, 0x8014ae80u, 0x3042000fu, 0x8014b5a0u, 0x85630000u, 0x8014d0e4u, 0x3c028015u, 0x8014f53cu, 0x0c026178u};
+static const uint32_t img21_sig[] = {0x801484d8u, 0x948200b0u, 0x801498c0u, 0x2414007fu, 0x80149ef4u, 0x3c018015u, 0x8014a540u, 0x00031140u, 0x8014ac2cu, 0x3c018015u, 0x8014b284u, 0xa4a2009au, 0x8014b8f0u, 0xa60000a8u, 0x8014d128u, 0x3043ffffu, 0x8014d82cu, 0x27bd0020u};
 static const FuncEntry img22_funcs[] = {
     {0x80153964u, o20_80153964},
     {0x801541d4u, o20_801541d4},
@@ -6718,7 +6726,7 @@ static const FuncEntry img22_funcs[] = {
     {0x80165cecu, o20_80165cec},
     {0x80165f5cu, o20_80165f5c},
 };
-static const uint32_t img22_sig[] = {0x80153964u, 0x27bdff50u, 0x80153968u, 0xafb600a8u, 0x8015396cu, 0x3c168008u, 0x80153970u, 0x26d612f8u, 0x80153974u, 0xafb00090u, 0x80153978u, 0xafbf00acu, 0x8015397cu, 0xafb500a4u, 0x80153980u, 0xafb400a0u, 0x80153c10u, 0xa7a2002cu, 0x80153e9cu, 0x02621021u, 0x8015412cu, 0x00681824u, 0x80154510u, 0x00e09821u, 0x80154518u, 0x2407fc40u, 0x8015451cu, 0x3062ffffu, 0x80154520u, 0x00021100u, 0x80154524u, 0x02221021u, 0x80154528u, 0x844200a8u, 0x80154530u, 0x14400041u, 0x80154534u, 0x24620001u, 0x801547ccu, 0x944269d8u, 0x80154a88u, 0x3c018016u, 0x80154d10u, 0xafb00040u, 0x8015502cu, 0x8fb00010u};
+static const uint32_t img22_sig[] = {0x80153964u, 0x27bdff50u, 0x80153968u, 0xafb600a8u, 0x8015396cu, 0x3c168008u, 0x80153970u, 0x26d612f8u, 0x80153974u, 0xafb00090u, 0x80153978u, 0xafbf00acu, 0x80155e78u, 0x00822025u, 0x801578c8u, 0x0c03a6b4u, 0x8015929cu, 0x480d5000u, 0x8015b6e8u, 0x0c038e85u, 0x8015b6f0u, 0x8e0200acu, 0x8015b6f8u, 0x14400003u, 0x8015b6fcu, 0x262400c4u, 0x8015b700u, 0x0c038e85u, 0x8015b704u, 0x260500b2u, 0x8015fa0cu, 0xa7a30012u, 0x80162448u, 0x00830018u, 0x801641c8u, 0x27bdffb0u, 0x80165f4cu, 0x8fb00018u};
 static const FuncEntry img23_funcs[] = {
     {0x80148500u, o21_80148500},
     {0x801485d0u, o21_801485d0},
@@ -6733,6 +6741,7 @@ static const FuncEntry img23_funcs[] = {
     {0x80149770u, o21_80149770},
     {0x80149878u, o21_80149878},
     {0x801498d0u, o21_801498d0},
+    {0x801498d8u, o21_801498d8},
     {0x80149da4u, o21_80149da4},
     {0x80149f84u, o21_80149f84},
     {0x8014a114u, o21_8014a114},
@@ -6748,6 +6757,7 @@ static const FuncEntry img23_funcs[] = {
     {0x8014a5a4u, o21_8014a5a4},
     {0x8014a670u, o21_8014a670},
     {0x8014a784u, o21_8014a784},
+    {0x8014a78cu, o21_8014a78c},
     {0x8014a848u, o21_8014a848},
     {0x8014a8c0u, o21_8014a8c0},
     {0x8014a8e0u, o21_8014a8e0},
@@ -7150,6 +7160,7 @@ static const FuncEntry img23_funcs[] = {
     {0x8016c45cu, o21_8016c45c},
     {0x8016c51cu, o21_8016c51c},
     {0x8016c74cu, o21_8016c74c},
+    {0x8016c754u, o21_8016c754},
     {0x8016c814u, o21_8016c814},
     {0x8016c8b4u, o21_8016c8b4},
     {0x8016c918u, o21_8016c918},
@@ -7173,7 +7184,7 @@ static const FuncEntry img23_funcs[] = {
     {0x8016e13cu, o21_8016e13c},
     {0x8016e204u, o21_8016e204},
 };
-static const uint32_t img23_sig[] = {0x80148500u, 0x27bdffd8u, 0x80148504u, 0x00002021u, 0x8014d86cu, 0x00431021u, 0x80151888u, 0x27a50010u, 0x801557ecu, 0x8c620000u, 0x8015adb0u, 0x3c018018u, 0x8015adbcu, 0x1440ffacu, 0x8015fbacu, 0x27b00010u, 0x801643acu, 0x00101400u, 0x80169e68u, 0x00021080u, 0x8016a000u, 0x94421366u, 0x8016e27cu, 0x00832025u};
+static const uint32_t img23_sig[] = {0x8014cb74u, 0x27bdffe0u, 0x8014cb78u, 0xafb10014u, 0x80154204u, 0xac227ce4u, 0x80156b98u, 0x00431025u, 0x80159ee8u, 0x00431021u, 0x8015d1dcu, 0x8e0c0000u, 0x8015d1e0u, 0x8e0d0004u, 0x8015f824u, 0x3c0cff00u, 0x801648e0u, 0x8e0c0008u, 0x8016a2acu, 0x02602021u, 0x8016e290u, 0x03e00008u};
 static const FuncEntry img24_funcs[] = {
     {0x8008d260u, o22_8008d260},
     {0x8008d298u, o22_8008d298},
@@ -7186,32 +7197,32 @@ static const FuncEntry img24_funcs[] = {
     {0x8008f79cu, o22_8008f79c},
     {0x8008f7bcu, o22_8008f7bc},
 };
-static const uint32_t img24_sig[] = {0x8008d260u, 0x27bdffe8u, 0x8008d7b4u, 0x8c820100u, 0x8008dca0u, 0x14400005u, 0x8008e18cu, 0x97a20012u, 0x8008e670u, 0x3c058009u, 0x8008eb54u, 0x24a5d028u, 0x8008f038u, 0xa040000cu, 0x8008f570u, 0x90e30000u, 0x8008fa80u, 0x8fb1001cu};
+static const uint32_t img24_sig[] = {0x8008d260u, 0x27bdffe8u, 0x8008d430u, 0xafa40018u, 0x8008d5fcu, 0x00009021u, 0x8008d77cu, 0xa300000du, 0x8008d8fcu, 0x25080008u, 0x8008da7cu, 0xaca30000u, 0x8008dc00u, 0x3484ffffu, 0x8008f604u, 0x2442fffeu, 0x8008f788u, 0x00471024u};
 const ImageEntry g_images[] = {
     {"SCUS_942.43", 0x80010000u, 0x80032000u, true, img0_funcs, 307, img0_sig, 9},
-    {"SYS.EXE", 0x80010000u, 0x80062000u, true, img1_funcs, 1065, img1_sig, 8},
+    {"SYS.EXE", 0x80010000u, 0x80062000u, true, img1_funcs, 1065, img1_sig, 9},
     {"overlays/P0_2b.bin", 0x8008c800u, 0x800ae000u, false, img2_funcs, 291, img2_sig, 9},
-    {"overlays/P0_9a.bin", 0x80190000u, 0x80195000u, false, img3_funcs, 26, img3_sig, 8},
+    {"overlays/P0_9a.bin", 0x80190000u, 0x80195000u, false, img3_funcs, 26, img3_sig, 9},
     {"overlays/P0_99.bin", 0x80146000u, 0x80148000u, false, img4_funcs, 21, img4_sig, 9},
-    {"overlays/P0_3a.bin", 0x801cf000u, 0x801fc000u, false, img5_funcs, 30, img5_sig, 11},
-    {"overlays/P1_33.bin", 0x8008c800u, 0x80143800u, false, img6_funcs, 997, img6_sig, 9},
-    {"overlays/P1_3c.bin", 0x80146000u, 0x80190000u, false, img7_funcs, 253, img7_sig, 15},
-    {"overlays/P1_49.bin", 0x801b2000u, 0x801ed800u, false, img8_funcs, 431, img8_sig, 10},
+    {"overlays/P0_3a.bin", 0x801cf000u, 0x801fc000u, false, img5_funcs, 30, img5_sig, 10},
+    {"overlays/P1_33.bin", 0x8008c800u, 0x80143800u, false, img6_funcs, 1000, img6_sig, 9},
+    {"overlays/P1_3c.bin", 0x80146000u, 0x80190000u, false, img7_funcs, 255, img7_sig, 17},
+    {"overlays/P1_49.bin", 0x801b2000u, 0x801ed800u, false, img8_funcs, 432, img8_sig, 11},
     {"overlays/P1_41.bin", 0x80190000u, 0x801b4800u, false, img9_funcs, 135, img9_sig, 13},
     {"overlays/P1_4b.bin", 0x80146000u, 0x801ae000u, false, img10_funcs, 463, img10_sig, 18},
-    {"overlays/P1_50.bin", 0x801ae000u, 0x801e8800u, false, img11_funcs, 536, img11_sig, 10},
-    {"overlays/P2_57.bin", 0x80146000u, 0x8017c800u, false, img12_funcs, 204, img12_sig, 18},
+    {"overlays/P1_50.bin", 0x801ae000u, 0x801e8800u, false, img11_funcs, 536, img11_sig, 11},
+    {"overlays/P2_57.bin", 0x80146000u, 0x8017c800u, false, img12_funcs, 205, img12_sig, 18},
     {"overlays/P2_5b.bin", 0x8017c800u, 0x80186800u, false, img13_funcs, 21, img13_sig, 9},
     {"overlays/P2_5f.bin", 0x80199800u, 0x801c1800u, false, img14_funcs, 151, img14_sig, 12},
-    {"overlays/P2_62.bin", 0x80146000u, 0x8015d800u, false, img15_funcs, 123, img15_sig, 11},
+    {"overlays/P2_62.bin", 0x80146000u, 0x8015d800u, false, img15_funcs, 123, img15_sig, 12},
     {"overlays/P2_65.bin", 0x8015d800u, 0x80182800u, false, img16_funcs, 134, img16_sig, 11},
     {"overlays/P2_67.bin", 0x8015d800u, 0x8019b800u, false, img17_funcs, 224, img17_sig, 17},
     {"overlays/P3_72.bin", 0x8016a000u, 0x801b0800u, false, img18_funcs, 229, img18_sig, 17},
-    {"overlays/P3_73.bin", 0x8016a000u, 0x801ce800u, false, img19_funcs, 820, img19_sig, 15},
+    {"overlays/P3_73.bin", 0x8016a000u, 0x801ce800u, false, img19_funcs, 821, img19_sig, 16},
     {"overlays/P4_8d.bin", 0x801f9800u, 0x801fc000u, false, img20_funcs, 20, img20_sig, 9},
     {"overlays/P4_82.bin", 0x80148000u, 0x80153800u, false, img21_funcs, 72, img21_sig, 9},
-    {"overlays/P4_84.bin", 0x80153800u, 0x80192800u, false, img22_funcs, 95, img22_sig, 23},
-    {"overlays/P4_8f.bin", 0x80148000u, 0x80183000u, false, img23_funcs, 452, img23_sig, 12},
+    {"overlays/P4_84.bin", 0x80153800u, 0x80192800u, false, img22_funcs, 95, img22_sig, 19},
+    {"overlays/P4_8f.bin", 0x80148000u, 0x80183000u, false, img23_funcs, 455, img23_sig, 11},
     {"overlays/P4_93.bin", 0x8008c800u, 0x80121000u, false, img24_funcs, 10, img24_sig, 9},
 };
 const size_t g_images_count = 25;

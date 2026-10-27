@@ -42,7 +42,7 @@ saves can be copied to and from emulators. Settings are in `einhander.ini`.
 | Setting | Options |
 |---|---|
 | Resolution | 1x (original) to 6x internal resolution (restart); the window follows it (240 lines x the setting, shrunk to fit the desktop) |
-| Widescreen 16:9 | wider view of the 3D world |
+| Widescreen 16:9 | wider view of the 3D world (Einhander: the extra width shows enemies entering and leaving at the edges; off by default) |
 | VSync, Fullscreen (F11 / Alt+Enter) | |
 | Scaling | sharp or smooth |
 | Texture filtering | off (original), smooth 3D (2D art and text stay sharp), smooth everything - bilinear on the palette-decoded texels, so transparent edges stay clean |

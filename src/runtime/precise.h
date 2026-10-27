@@ -6,5 +6,6 @@
 #include <cstdint>
 struct PreciseVtx { float x, y, w; };   // screen x/y (no drawing offset), view depth
 void precise_store(uint32_t addr, uint32_t val, const PreciseVtx& p);
+void precise_note(uint32_t val, const PreciseVtx& p);   // value read into a CPU register (mfc2)
 bool precise_lookup(uint32_t addr, uint32_t val, PreciseVtx* p);
 void precise_frame();                  // once per vblank: forget the by-value cache

@@ -2,6 +2,334 @@
 #include "funcs.h"
 #define R(n) c->r[n]
 
+// overlays/P1_49.bin 801c213c
+void o06_801c213c(Cpu* c) {
+    FUNC_ENTRY(c, 0x801c213cu);
+    CHECK_EVENTS(c);
+    R(4) = MEM_RW(R(4) + 0xcu);
+    R(2) = MEM_RH(R(4) + 0x6cu);
+    R(3) = R(2) - 0x1u;
+    R(2) = R(2) << 16;
+    {
+        bool t = (int32_t)R(2) >= 0;
+        MEM_WH(R(4) + 0x6cu, R(3));
+        c->cycles += 8;
+        if (t) { goto L_801c21a4; }
+    }
+    R(2) = MEM_RB(R(4) + 0x39u);
+    R(2) = R(2) - 0x1u;
+    MEM_WB(R(4) + 0x39u, R(2));
+    R(2) = R(2) << 24;
+    {
+        bool t = (int32_t)R(2) < 0;
+        c->cycles += 7;
+        if (t) { goto L_801c218c; }
+    }
+    R(2) = MEM_RW(R(4) + 0x8u);
+    R(2) = R(2) | 0x4u;
+    {
+        MEM_WW(R(4) + 0x8u, R(2));
+        c->cycles += 5;
+        goto L_801c2190;
+    }
+L_801c218c:
+    MEM_WB(R(4) + 0x39u, R(0));
+    c->cycles += 1;
+L_801c2190:
+    R(2) = MEM_RB(R(4) + 0x3u);
+    R(3) = 0u + 0x28u;
+    MEM_WH(R(4) + 0x6cu, R(3));
+    R(2) = R(2) + 0x1u;
+    MEM_WB(R(4) + 0x3u, R(2));
+    c->cycles += 5;
+L_801c21a4:
+    {
+        c->cycles += 2;
+        return;
+    }
+}
+
+// overlays/P1_49.bin 801c21ac
+void o06_801c21ac(Cpu* c) {
+    FUNC_ENTRY(c, 0x801c21acu);
+    CHECK_EVENTS(c);
+    R(29) = R(29) - 0x18u;
+    MEM_WW(R(29) + 0x14u, R(31));
+    MEM_WW(R(29) + 0x10u, R(16));
+    R(16) = MEM_RW(R(4) + 0xcu);
+    R(2) = MEM_RW(R(16) + 0x8u);
+    R(2) = R(2) & 0x4u;
+    {
+        bool t = R(2) != 0u;
+        c->cycles += 10;
+        if (t) { goto L_801c2208; }
+    }
+    R(2) = MEM_RH(R(16) + 0x6cu);
+    R(2) = R(2) - 0x2u;
+    MEM_WH(R(16) + 0x6cu, R(2));
+    R(2) = R(2) << 16;
+    {
+        bool t = (int32_t)R(2) >= 0;
+        c->cycles += 7;
+        if (t) { goto L_801c2208; }
+    }
+    R(31) = 0x801c21f8u;
+        R(5) = 0u + 0xcu;
+    c->cycles += 2;
+    o06_801b28a0(c);
+    R(2) = MEM_RB(R(16) + 0x3u);
+    R(2) = R(2) + 0x1u;
+    MEM_WB(R(16) + 0x3u, R(2));
+    c->cycles += 4;
+L_801c2208:
+    R(31) = MEM_RW(R(29) + 0x14u);
+    R(16) = MEM_RW(R(29) + 0x10u);
+    R(29) = R(29) + 0x18u;
+    {
+        c->cycles += 5;
+        return;
+    }
+}
+
+// overlays/P1_49.bin 801c221c
+void o06_801c221c(Cpu* c) {
+    FUNC_ENTRY(c, 0x801c221cu);
+    CHECK_EVENTS(c);
+    R(29) = R(29) - 0x18u;
+    MEM_WW(R(29) + 0x14u, R(31));
+    MEM_WW(R(29) + 0x10u, R(16));
+    R(16) = MEM_RW(R(4) + 0xcu);
+    R(2) = MEM_RW(R(16) + 0x44u);
+    R(2) = R(2) & 0x1u;
+    {
+        bool t = R(2) == 0u;
+        c->cycles += 10;
+        if (t) { goto L_801c2298; }
+    }
+    R(2) = MEM_RW(R(16) + 0x4u);
+    R(2) = R(2) & 0x4u;
+    {
+        bool t = R(2) == 0u;
+        R(3) = 0x20000u;
+        c->cycles += 5;
+        if (t) { goto L_801c2288; }
+    }
+    R(2) = MEM_RW(R(16) + 0x8u);
+    R(2) = R(2) & R(3);
+    {
+        bool t = R(2) != 0u;
+        c->cycles += 5;
+        if (t) { goto L_801c2288; }
+    }
+    R(31) = 0x801c2274u;
+        R(5) = 0u + 0x9u;
+    c->cycles += 2;
+    o06_801b28a0(c);
+    R(2) = MEM_RB(R(16) + 0x3u);
+    R(2) = R(2) + 0x1u;
+    {
+        MEM_WB(R(16) + 0x3u, R(2));
+        c->cycles += 5;
+        goto L_801c2298;
+    }
+L_801c2288:
+    R(2) = MEM_RW(R(16) + 0x4u);
+    R(2) = R(2) | 0x10u;
+    MEM_WW(R(16) + 0x4u, R(2));
+    c->cycles += 4;
+L_801c2298:
+    R(31) = MEM_RW(R(29) + 0x14u);
+    R(16) = MEM_RW(R(29) + 0x10u);
+    R(29) = R(29) + 0x18u;
+    {
+        c->cycles += 5;
+        return;
+    }
+}
+
+// overlays/P1_49.bin 801c22ac
+void o06_801c22ac(Cpu* c) {
+    FUNC_ENTRY(c, 0x801c22acu);
+    CHECK_EVENTS(c);
+    R(29) = R(29) - 0x18u;
+    MEM_WW(R(29) + 0x14u, R(31));
+    MEM_WW(R(29) + 0x10u, R(16));
+    R(16) = MEM_RW(R(4) + 0xcu);
+    R(2) = MEM_RW(R(16) + 0x4u);
+    R(3) = 0u + 0x20u;
+    R(2) = R(2) & 0xe0u;
+    {
+        bool t = R(2) != R(3);
+        c->cycles += 10;
+        if (t) { goto L_801c2300; }
+    }
+    R(2) = MEM_RH(R(4));
+    R(2) = R(2) & 0x1u;
+    {
+        bool t = R(2) == 0u;
+        c->cycles += 5;
+        if (t) { goto L_801c22f0; }
+    }
+    R(31) = 0x801c22f0u;
+        R(5) = 0u + 0x1u;
+    c->cycles += 2;
+    o06_801b3148(c);
+L_801c22f0:
+    R(3) = MEM_RW(R(16) + 0x4u);
+    R(2) = 0u - 0x21u;
+    R(2) = R(2) & R(3);
+    MEM_WW(R(16) + 0x4u, R(2));
+    c->cycles += 4;
+L_801c2300:
+    R(2) = MEM_RW(R(16) + 0x44u);
+    R(2) = R(2) & 0x1u;
+    {
+        bool t = R(2) == 0u;
+        R(3) = 0u + 0xau;
+        c->cycles += 5;
+        if (t) { goto L_801c2324; }
+    }
+    R(2) = MEM_RB(R(16) + 0x3u);
+    MEM_WH(R(16) + 0x6cu, R(3));
+    R(2) = R(2) + 0x1u;
+    MEM_WB(R(16) + 0x3u, R(2));
+    c->cycles += 4;
+L_801c2324:
+    R(31) = MEM_RW(R(29) + 0x14u);
+    R(16) = MEM_RW(R(29) + 0x10u);
+    R(29) = R(29) + 0x18u;
+    {
+        c->cycles += 5;
+        return;
+    }
+}
+
+// overlays/P1_49.bin 801c2338
+void o06_801c2338(Cpu* c) {
+    FUNC_ENTRY(c, 0x801c2338u);
+    CHECK_EVENTS(c);
+    R(29) = R(29) - 0x20u;
+    MEM_WW(R(29) + 0x18u, R(18));
+    R(18) = R(4) + 0u;
+    MEM_WW(R(29) + 0x1cu, R(31));
+    MEM_WW(R(29) + 0x14u, R(17));
+    MEM_WW(R(29) + 0x10u, R(16));
+    R(16) = MEM_RW(R(18) + 0xcu);
+    R(2) = MEM_RH(R(16) + 0x6cu);
+    R(17) = R(16) + 0x20cu;
+    R(3) = R(2) - 0x1u;
+    R(2) = R(2) << 16;
+    {
+        bool t = (int32_t)R(2) >= 0;
+        MEM_WH(R(16) + 0x6cu, R(3));
+        c->cycles += 14;
+        if (t) { goto L_801c2404; }
+    }
+    R(2) = MEM_RB(R(16) + 0x38u);
+    R(2) = R(2) - 0x1u;
+    MEM_WB(R(16) + 0x38u, R(2));
+    R(2) = R(2) << 24;
+    {
+        bool t = (int32_t)R(2) < 0;
+        R(3) = 0u + 0x14u;
+        c->cycles += 7;
+        if (t) { goto L_801c23e8; }
+    }
+    R(2) = MEM_RW(R(16) + 0x8u);
+    MEM_WH(R(16) + 0x6cu, R(3));
+    R(2) = R(2) | 0x2u;
+    MEM_WW(R(16) + 0x8u, R(2));
+    R(2) = MEM_LWL(R(16) + 0x3fu, R(2));
+    R(2) = MEM_LWR(R(16) + 0x3cu, R(2));
+    R(3) = MEM_LWL(R(16) + 0x43u, R(3));
+    R(3) = MEM_LWR(R(16) + 0x40u, R(3));
+    MEM_SWL(R(16) + 0x20fu, R(2));
+    MEM_SWR(R(16) + 0x20cu, R(2));
+    MEM_SWL(R(16) + 0x213u, R(3));
+    MEM_SWR(R(16) + 0x210u, R(3));
+    R(31) = 0x801c23c4u;
+        R(4) = R(17) + 0u;
+    c->cycles += 14;
+    rt_call(c, 0x800dd568u);
+    R(31) = 0x801c23ccu;
+        R(4) = R(17) + 0u;
+    c->cycles += 2;
+    rt_call(c, 0x800d7e90u);
+    R(4) = R(18) + 0u;
+    R(5) = 0x80000u;
+    R(6) = 0u + 0x4000u;
+    R(31) = 0x801c23e0u;
+        R(7) = R(17) + 0u;
+    c->cycles += 5;
+    o06_801b2e6c(c);
+    {
+        c->cycles += 2;
+        goto L_801c23f4;
+    }
+L_801c23e8:
+    R(2) = 0u + 0xau;
+    MEM_WB(R(16) + 0x38u, R(0));
+    MEM_WH(R(16) + 0x6cu, R(2));
+    c->cycles += 3;
+L_801c23f4:
+    R(2) = MEM_RB(R(16) + 0x3u);
+    R(2) = R(2) + 0x1u;
+    MEM_WB(R(16) + 0x3u, R(2));
+    c->cycles += 4;
+L_801c2404:
+    R(31) = MEM_RW(R(29) + 0x1cu);
+    R(18) = MEM_RW(R(29) + 0x18u);
+    R(17) = MEM_RW(R(29) + 0x14u);
+    R(16) = MEM_RW(R(29) + 0x10u);
+    R(29) = R(29) + 0x20u;
+    {
+        c->cycles += 7;
+        return;
+    }
+}
+
+// overlays/P1_49.bin 801c2420
+void o06_801c2420(Cpu* c) {
+    FUNC_ENTRY(c, 0x801c2420u);
+    CHECK_EVENTS(c);
+    R(29) = R(29) - 0x18u;
+    MEM_WW(R(29) + 0x14u, R(31));
+    MEM_WW(R(29) + 0x10u, R(16));
+    R(16) = MEM_RW(R(4) + 0xcu);
+    R(2) = MEM_RW(R(16) + 0x8u);
+    R(2) = R(2) & 0x2u;
+    {
+        bool t = R(2) != 0u;
+        c->cycles += 10;
+        if (t) { goto L_801c2478; }
+    }
+    R(2) = MEM_RH(R(16) + 0x6cu);
+    R(3) = R(2) - 0x1u;
+    R(2) = R(2) << 16;
+    {
+        bool t = (int32_t)R(2) >= 0;
+        MEM_WH(R(16) + 0x6cu, R(3));
+        c->cycles += 6;
+        if (t) { goto L_801c2478; }
+    }
+    R(31) = 0x801c2468u;
+        R(5) = 0u + 0xau;
+    c->cycles += 2;
+    o06_801b28a0(c);
+    R(2) = MEM_RB(R(16) + 0x3u);
+    R(2) = R(2) + 0x1u;
+    MEM_WB(R(16) + 0x3u, R(2));
+    c->cycles += 4;
+L_801c2478:
+    R(31) = MEM_RW(R(29) + 0x14u);
+    R(16) = MEM_RW(R(29) + 0x10u);
+    R(29) = R(29) + 0x18u;
+    {
+        c->cycles += 5;
+        return;
+    }
+}
+
 // overlays/P1_49.bin 801c248c
 void o06_801c248c(Cpu* c) {
     FUNC_ENTRY(c, 0x801c248cu);
@@ -37382,184 +37710,6 @@ void o08_8014931c(Cpu* c) {
     rt_call(c, t); }
     R(31) = MEM_RW(R(29) + 0x20u);
     R(29) = R(29) + 0x28u;
-    {
-        c->cycles += 4;
-        return;
-    }
-}
-
-// overlays/P1_4b.bin 80149380
-void o08_80149380(Cpu* c) {
-    FUNC_ENTRY(c, 0x80149380u);
-    CHECK_EVENTS(c);
-    R(29) = R(29) - 0x28u;
-    MEM_WW(R(29) + 0x20u, R(31));
-    R(6) = 0x80140000u;
-    R(6) = R(6) + 0x60a8u;
-    R(2) = MEM_RW(R(6));
-    R(3) = MEM_RW(R(6) + 0x4u);
-    R(5) = MEM_RW(R(6) + 0x8u);
-    MEM_WW(R(29) + 0x10u, R(2));
-    MEM_WW(R(29) + 0x14u, R(3));
-    MEM_WW(R(29) + 0x18u, R(5));
-    R(2) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(4) + 0x3du);
-    R(2) = R(2) << 2;
-    R(2) = R(29) + R(2);
-    R(2) = MEM_RW(R(2) + 0x10u);
-    { uint32_t t = R(2);
-    R(31) = 0x801493c8u;
-    c->cycles += 18;
-    rt_call(c, t); }
-    R(31) = MEM_RW(R(29) + 0x20u);
-    R(29) = R(29) + 0x28u;
-    {
-        c->cycles += 4;
-        return;
-    }
-}
-
-// overlays/P1_4b.bin 801493d8
-void o08_801493d8(Cpu* c) {
-    FUNC_ENTRY(c, 0x801493d8u);
-    CHECK_EVENTS(c);
-    R(29) = R(29) - 0x28u;
-    MEM_WW(R(29) + 0x20u, R(31));
-    R(6) = 0x80140000u;
-    R(6) = R(6) + 0x60b4u;
-    R(2) = MEM_RW(R(6));
-    R(3) = MEM_RW(R(6) + 0x4u);
-    R(5) = MEM_RW(R(6) + 0x8u);
-    MEM_WW(R(29) + 0x10u, R(2));
-    MEM_WW(R(29) + 0x14u, R(3));
-    MEM_WW(R(29) + 0x18u, R(5));
-    R(2) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(4) + 0x3du);
-    R(2) = R(2) << 2;
-    R(2) = R(29) + R(2);
-    R(2) = MEM_RW(R(2) + 0x10u);
-    { uint32_t t = R(2);
-    R(31) = 0x80149420u;
-    c->cycles += 18;
-    rt_call(c, t); }
-    R(31) = MEM_RW(R(29) + 0x20u);
-    R(29) = R(29) + 0x28u;
-    {
-        c->cycles += 4;
-        return;
-    }
-}
-
-// overlays/P1_4b.bin 80149430
-void o08_80149430(Cpu* c) {
-    FUNC_ENTRY(c, 0x80149430u);
-    CHECK_EVENTS(c);
-    R(29) = R(29) - 0x28u;
-    MEM_WW(R(29) + 0x20u, R(31));
-    R(6) = 0x80140000u;
-    R(6) = R(6) + 0x60c0u;
-    R(2) = MEM_RW(R(6));
-    R(3) = MEM_RW(R(6) + 0x4u);
-    R(5) = MEM_RW(R(6) + 0x8u);
-    MEM_WW(R(29) + 0x10u, R(2));
-    MEM_WW(R(29) + 0x14u, R(3));
-    MEM_WW(R(29) + 0x18u, R(5));
-    R(2) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(4) + 0x3du);
-    R(2) = R(2) << 2;
-    R(2) = R(29) + R(2);
-    R(2) = MEM_RW(R(2) + 0x10u);
-    { uint32_t t = R(2);
-    R(31) = 0x80149478u;
-    c->cycles += 18;
-    rt_call(c, t); }
-    R(31) = MEM_RW(R(29) + 0x20u);
-    R(29) = R(29) + 0x28u;
-    {
-        c->cycles += 4;
-        return;
-    }
-}
-
-// overlays/P1_4b.bin 80149488
-void o08_80149488(Cpu* c) {
-    FUNC_ENTRY(c, 0x80149488u);
-    CHECK_EVENTS(c);
-    R(29) = R(29) - 0x28u;
-    MEM_WW(R(29) + 0x20u, R(31));
-    R(6) = 0x80140000u;
-    R(6) = R(6) + 0x60ccu;
-    R(2) = MEM_RW(R(6));
-    R(3) = MEM_RW(R(6) + 0x4u);
-    R(5) = MEM_RW(R(6) + 0x8u);
-    MEM_WW(R(29) + 0x10u, R(2));
-    MEM_WW(R(29) + 0x14u, R(3));
-    MEM_WW(R(29) + 0x18u, R(5));
-    R(2) = MEM_RW(R(6) + 0xcu);
-    MEM_WW(R(29) + 0x1cu, R(2));
-    R(2) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(4) + 0x3du);
-    R(2) = R(2) << 2;
-    R(2) = R(29) + R(2);
-    R(2) = MEM_RW(R(2) + 0x10u);
-    { uint32_t t = R(2);
-    R(31) = 0x801494dcu;
-    c->cycles += 21;
-    rt_call(c, t); }
-    R(31) = MEM_RW(R(29) + 0x20u);
-    R(29) = R(29) + 0x28u;
-    {
-        c->cycles += 4;
-        return;
-    }
-}
-
-// overlays/P1_4b.bin 801494ec
-void o08_801494ec(Cpu* c) {
-    FUNC_ENTRY(c, 0x801494ecu);
-    CHECK_EVENTS(c);
-    R(29) = R(29) - 0x20u;
-    MEM_WW(R(29) + 0x18u, R(31));
-    R(2) = 0x80150000u;
-    R(2) = R(2) - 0x6110u;
-    MEM_WW(R(29) + 0x10u, R(2));
-    R(2) = 0x80150000u;
-    R(2) = R(2) - 0x66e4u;
-    MEM_WW(R(29) + 0x14u, R(2));
-    R(2) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(4) + 0x3du);
-    R(2) = R(2) << 2;
-    R(2) = R(29) + R(2);
-    R(2) = MEM_RW(R(2) + 0x10u);
-    { uint32_t t = R(2);
-    R(31) = 0x8014952cu;
-    c->cycles += 16;
-    rt_call(c, t); }
-    R(31) = MEM_RW(R(29) + 0x18u);
-    R(29) = R(29) + 0x20u;
-    {
-        c->cycles += 4;
-        return;
-    }
-}
-
-// overlays/P1_4b.bin 8014953c
-void o08_8014953c(Cpu* c) {
-    FUNC_ENTRY(c, 0x8014953cu);
-    CHECK_EVENTS(c);
-    R(29) = R(29) - 0x20u;
-    MEM_WW(R(29) + 0x18u, R(31));
-    R(2) = 0x80150000u;
-    R(2) = R(2) - 0x60a4u;
-    MEM_WW(R(29) + 0x10u, R(2));
-    R(2) = 0x80150000u;
-    R(2) = R(2) - 0x6660u;
-    MEM_WW(R(29) + 0x14u, R(2));
-    R(2) = (uint32_t)(int32_t)(int8_t)MEM_RB(R(4) + 0x3du);
-    R(2) = R(2) << 2;
-    R(2) = R(29) + R(2);
-    R(2) = MEM_RW(R(2) + 0x10u);
-    { uint32_t t = R(2);
-    R(31) = 0x8014957cu;
-    c->cycles += 16;
-    rt_call(c, t); }
-    R(31) = MEM_RW(R(29) + 0x18u);
-    R(29) = R(29) + 0x20u;
     {
         c->cycles += 4;
         return;

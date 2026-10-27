@@ -203,9 +203,11 @@ void gl_platform_release_current() {
 void platform_rumble(int small_on, int large) {
     static int last_s = -1, last_l = -1;
     if (!g_pad && !g_joy) return;
+    if (!g_cfg.vibration) small_on = large = 0;
+    large = large * g_cfg.vibration_strength / 100;
     if (small_on == last_s && large == last_l) return;
     last_s = small_on; last_l = large;
-    Uint16 lo = (Uint16)(large * 257), hi = small_on ? 0xc000 : 0;
+    Uint16 lo = (Uint16)(large * 257), hi = small_on ? (Uint16)(0xc000 * g_cfg.vibration_strength / 100) : 0;
     if (g_pad) SDL_GameControllerRumble(g_pad, lo, hi, 1000);
     else SDL_JoystickRumble(g_joy, lo, hi, 1000);
 }

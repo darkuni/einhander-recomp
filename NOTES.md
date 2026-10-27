@@ -26,7 +26,8 @@ by references, not by the gap sweep, so no data words). `lookup_func` (indirect 
 `jalr`, calls between overlays) checks the signatures of the images covering the target (with a
 small most-recently-used cache) and calls the recompiled function; code in no known image runs
 in the interpreter. Direct calls inside an image, and from an overlay into `SYS.EXE`, are plain
-C calls. `OVL_CAPTURE=dir` logs every interpreted entry point with RAM dumps, which is how
+C calls. Data words of an overlay (or of the executable) that point into another overlay loaded
+alongside it (the engine's tables of stage handlers) are entry points too. `OVL_CAPTURE=dir` logs every interpreted entry point with RAM dumps, which is how
 unknown overlays were located (`LOG=cdmap` logs which disc sector went to which address).
 
 ## Recompiler (`src/recomp.py`)
@@ -130,6 +131,12 @@ same `read_raw` interface either way.
 - BIOS threads: a retired host thread is told apart from its replacement by a generation number.
 
 ## Debugging aids
+
+- `einhander.log` next to the exe lists code the game ran outside the recompiled images (it
+  still works, in the interpreter); it only appears when that happens.
+- `POKE=addr=value,...` (from frame `POKE_FROM`) writes RAM bytes every frame, e.g.
+  `POKE=800813c4=3` keeps three lives (0x800813C4 is the lives counter; 0x80081496 and the
+  stage request tables at 0x80059B64 + 4 x stage are where a stage jump would start).
 
 - `LOG=bios,cd,irq,thread,ovl,interp,dma,gpu,disp,mdec,...` category logging.
 - `SHOT_DIR`, `SHOT_EVERY`, `SHOT_FROM`, `FRAMES`, `NO_THROTTLE`, `STOP_AT_FRAME` (SIGTRAP for gdb;

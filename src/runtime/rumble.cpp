@@ -1,4 +1,5 @@
 #include "rumble.h"
+#include "game.h"
 #include "config.h"
 #include "log.h"
 #include <algorithm>
@@ -14,6 +15,7 @@ struct Effect {
     bool by_volume;      // scale with how loud the game plays it
     const char* what;
 };
+#ifdef GAME_SOUND_RUMBLE
 // Sound effects of the common SE bank (the same sample data is in every stage's archive)
 static const Effect kEffects[] = {
     {0x2f422009u, 0.85f, 1.00f, 14, false, false, "player hit"},
@@ -25,12 +27,16 @@ static const Effect kEffects[] = {
     {0xefe8972fu, 0.00f, 0.12f, 2, true, false, "machine gun"},
     {0x6c468fc7u, 0.10f, 0.15f, 3, true, false, "gunpod fire"},
 };
+#else
+// the game drives the DualShock motors itself (sio.cpp): no sound-driven effects
+static const Effect kEffects[] = {{0, 0, 0, 0, false, false, ""}};
+#endif
 
 struct Active { float low, high; int left, len; };
 static Active g_act[16];
 
 void rumble_sample(uint32_t hash, int volume) {
-    if (!g_cfg.vibration) return;
+    if (!g_cfg.vibration || !hash) return;
     for (const Effect& e : kEffects) {
         if (e.hash != hash) continue;
         if (e.weapon && g_cfg.vibration < 2) return;
@@ -44,6 +50,9 @@ void rumble_sample(uint32_t hash, int volume) {
 }
 
 void rumble_frame() {
+#ifndef GAME_SOUND_RUMBLE
+    return;
+#endif
     float low = 0, high = 0;
     for (Active& a : g_act) {
         if (a.left <= 0) continue;

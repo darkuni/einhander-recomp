@@ -126,6 +126,27 @@ static void watch_ram(int frame) {
 unsigned g_frame_no = 0;
 extern bool g_capture_pending;
 
+// POKE="8006eb07=2,80081000=5": write these RAM bytes every frame (testing: e.g. keep lives)
+static void poke_ram() {
+    static std::vector<std::pair<uint32_t, uint8_t>> p;
+    static bool parsed = false;
+    if (!parsed) {
+        parsed = true;
+        if (const char* e = getenv("POKE")) {
+            std::string s = std::string(e) + ",";
+            size_t a = 0, c;
+            while ((c = s.find(',', a)) != std::string::npos) {
+                unsigned ad = 0, v = 0;
+                if (sscanf(s.substr(a, c - a).c_str(), "%x=%x", &ad, &v) == 2) p.push_back({ad, (uint8_t)v});
+                a = c + 1;
+            }
+        }
+    }
+    static unsigned from = getenv("POKE_FROM") ? (unsigned)atoi(getenv("POKE_FROM")) : 0;
+    if (g_frame_no < from) return;
+    for (auto& x : p) g_ram[x.first & 0x1fffff] = x.second;
+}
+
 void platform_vblank() {
     static int frames = 0;
     static int vbl = 0;
@@ -137,6 +158,7 @@ void platform_vblank() {
         if (FILE* f = fopen(fn, "wb")) { fwrite(g_ram, 1, 0x200000, f); fclose(f); }
     }
     scripted_input(vbl);
+    poke_ram();
     rumble_frame();
     watch_ram(vbl);
     static int dump_at = -1;
@@ -260,6 +282,12 @@ int main(int argc, char** argv) {
     size_t slash = self.find_last_of("/\\");
     g_exe_dir = slash == std::string::npos ? "" : self.substr(0, slash + 1);
     config_load(argv[0]);
+    {
+        extern std::string g_interp_log_path;
+        g_interp_log_path = g_exe_dir + "einhander.log";
+        std::error_code ec;
+        fs::remove(g_interp_log_path, ec);   // a fresh log each run
+    }
     fs::path base = g_exe_dir.empty() ? fs::path(".") : fs::path(g_exe_dir);
     fs::path pack = base / "assets.dat";
 

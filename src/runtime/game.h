@@ -7,6 +7,8 @@
 #define GAME_SERIAL "SCUS-94243"
 static const unsigned GAME_EXE_SIZE = 141312u;
 static const unsigned GAME_EXE_PC = 0x800155fcu;
+// The game has no vibration of its own: rumble.cpp makes it from sound effects
+#define GAME_SOUND_RUMBLE 1
 
 // SYSTEM.CNF: TCB = 4, EVENT = 10, STACK = 801FFF00
 static const int SYS_TCBS = 4;

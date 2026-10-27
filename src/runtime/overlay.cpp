@@ -44,7 +44,11 @@ static const std::vector<Item>& items() {
         {"Precise geometry", {"Off (original)", "On"}, "No wobbling polygons or warping textures."},
         {"Screen filter", {"Off", "Scanlines", "CRT"}, "Needs a window at least 600 pixels tall."},
         {"Audio resampling", {"Standard", "High quality"}, "Cleaner streamed music and voices."},
+#ifdef GAME_SOUND_RUMBLE
         {"Vibration", {"Off", "Hits and explosions", "Also when firing"}, "Added by this port: the original game has no vibration."},
+#else
+        {"Vibration", {"Off", "On"}, "DualShock rumble, when the game uses it."},
+#endif
         {"Vibration strength", {"25%", "50%", "75%", "100%"}, nullptr},
         {"Swap A/B and X/Y", {"Off", "On"}, "Gamepad: use the face buttons by position (Nintendo style)."},
         {"Fast CD loading", {"Off", "On"}, "Loads levels faster; music and movies stay real-time."},
@@ -69,7 +73,7 @@ static int get_value(int i) {
         case 7: return g_cfg.subpixel;
         case 8: return g_cfg.crt;
         case 9: return g_cfg.hq_audio;
-        case 10: return g_cfg.vibration;
+        case 10: return std::min(g_cfg.vibration, (int)items()[10].opts.size() - 1);
         case 11: return std::clamp((g_cfg.vibration_strength + 12) / 25 - 1, 0, 3);
         case 12: return g_cfg.swap_ab_xy;
         case 13: return g_cfg.fast_cd;

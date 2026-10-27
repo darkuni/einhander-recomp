@@ -392,6 +392,13 @@ class Recompiler:
                 out.add((img, v))
             elif img.host is not None and img.host.has(v) and is_plausible_entry(img.host, v):
                 out.add((img.host, v))
+            else:
+                # data of one overlay (or the executable) pointing into other overlays loaded
+                # alongside it, e.g. the game engine's tables of stage handlers
+                for o in self.overlays:
+                    if o is not img and o.has(v) and (o.host is img or o.host is img.host) \
+                            and (o.name, v) not in self.notfunc and is_plausible_entry(o, v):
+                        out.add((o, v))
         return out
 
     def analyze(self):
@@ -474,6 +481,8 @@ class Recompiler:
             print('round %d: %d functions' % (rounds, len(self.funcs)), file=sys.stderr)
         for k, v in dptr.items():
             entries[k] |= v
+            for a in v:
+                self.swept.add((k, a))   # data-pointer-only entries: not used for signatures either
         self.entries = entries
 
     def sweep_gaps(self, im, code):
@@ -929,7 +938,8 @@ class Recompiler:
     def signature(self, im, base_words=8):
         """(addr, word) pairs of instruction words that identify `im` in RAM: spread over its code,
         plus words that differ from every other image covering the same addresses."""
-        # functions found by the gap sweep may be data that looks like code: not used
+        # functions found only by the gap sweep or through data words may be data that looks like
+        # code: not used
         code = sorted(a for (imn, e), f in self.funcs.items() if imn == im.name and not f.bad
                       and (imn, e) not in self.swept for a in f.addrs if im.word(a) != 0)
         if not code:

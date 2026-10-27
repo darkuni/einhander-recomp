@@ -114,6 +114,18 @@ static inline uint32_t sx16(uint32_t v) { return (uint32_t)(int32_t)(int16_t)v; 
 // platform_vblank dump RAM after new code shows up; tools/overlays.py turns that into overlays.
 bool g_capture_pending = false;
 extern unsigned g_frame_no;
+// Code outside the recompiled images is noted once in <exe>.log (so a report from a player can say
+// where the game ran code the recompiler did not see; it still runs, in the interpreter).
+std::string g_interp_log_path;
+static void interp_note(uint32_t addr, uint32_t ra) {
+    if (g_interp_log_path.empty()) return;
+    static int n = 0;
+    if (++n > 200) return;
+    if (FILE* f = fopen(g_interp_log_path.c_str(), "a")) {
+        fprintf(f, "interpreted code at %08x (called from %08x)\n", addr, ra);
+        fclose(f);
+    }
+}
 static void capture_note(uint32_t addr, uint32_t h) {
     static const char* dir = getenv("OVL_CAPTURE");
     if (!dir) return;
@@ -129,7 +141,7 @@ void rt_interp(Cpu* c, uint32_t addr) {
     for (int i = 0; i < 8; i++) h = (h ^ MEM_RW(addr + 4 * i)) * 16777619u;
     if (reported.insert((uint64_t)h << 32 | addr).second) {
         LOG("interp", "interpreting %08x (ra=%08x)", addr, c->r[31]);
-        if ((addr & 0x1fffffffu) < 0x200000u) capture_note(addr, h);
+        if ((addr & 0x1fffffffu) < 0x200000u) { capture_note(addr, h); interp_note(addr, c->r[31]); }
     }
     const uint32_t ret = c->r[31];
     uint32_t pc = addr;

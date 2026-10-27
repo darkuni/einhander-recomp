@@ -5,6 +5,8 @@
 #include "gte.h"
 #include "precise.h"
 #include <cmath>
+#include <cstdio>
+#include <cstdlib>
 #include <algorithm>
 #include <cstdint>
 
@@ -336,13 +338,18 @@ void gte_command(uint32_t op) {
 static inline int32_t clamp_rgb5(int32_t v) { return std::clamp(v >> 7, 0, 0x1f); }
 
 void gte_store_sxy(uint32_t addr, int r) {
-    uint32_t v = gte_read_data(r);
+    uint32_t v = (uint32_t)d[r == 15 ? 14 : r];
     MEM_WW(addr, v);
     int i = r == 15 ? 2 : r - 12;
     if (g_pvalid[i]) precise_store(addr, v, g_pfifo[i]);
 }
 
 uint32_t gte_read_data(int r) {
+    if (r >= 12 && r <= 15) {
+        // mfc2 of a screen coordinate: the game moves it around in registers (swc2 has its own path)
+        int i = r == 15 ? 2 : r - 12;
+        if (g_pvalid[i]) precise_note((uint32_t)d[r == 15 ? 14 : r], g_pfifo[i]);
+    }
     switch (r) {
         case 1: case 3: case 5: case 8: case 9: case 10: case 11:
             return (uint32_t)(int32_t)(int16_t)d[r];
