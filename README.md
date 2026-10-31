@@ -1,4 +1,4 @@
-# Einhänder - native recompilation (private)
+# Einhänder - native recompilation
 
 A static recompilation of **Einhänder** (PlayStation, NTSC-U, `SCUS-94243`, Squaresoft, 1998) to
 native code. The game's two MIPS executables (`SCUS_942.43`, which boots and `LoadExec()`s
@@ -20,7 +20,8 @@ See [NOTES.md](NOTES.md) for the technical write-up.
 
 ## Running (Windows)
 
-1. Download the `einhander-win64` artifact from the latest **Build Windows** run (Actions tab).
+1. Download the latest `Einhander-<version>-win64.zip` from [Releases](https://github.com/darkuni/einhander-recomp/releases)
+   (or the `einhander-win64` artifact of any **Build Windows** run on the Actions tab) and unzip it.
 2. First run only: put your disc image (`Einhander.chd`, or a `.cue` + its `.bin`) next to
    `einhander.exe` or in a `game` folder beside it, then run `einhander.exe` - or drag the image
    onto it.
@@ -100,8 +101,9 @@ Windows (cross-compiled with mingw-w64): see `.github/workflows/build-windows.ym
 
 This is an unofficial fan project. It is **not affiliated with, endorsed by, or sponsored by** Square
 Enix, Sony Interactive Entertainment or any of their affiliates. *Einhänder* and all related names and
-marks belong to their respective owners. This repository contains no game data; you need your own
-legally obtained copy of the game.
+marks belong to their respective owners. This repository and its releases contain no game data
+(graphics, sound, music, movies): those come from your own legally obtained disc image. The recompiled
+source and the release exe contain code machine-translated from the game's executables.
 
 ## License
 
